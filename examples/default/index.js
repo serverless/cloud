@@ -11,73 +11,85 @@
 */
 const { api, data, schedule } = require("@serverless/cloud"); // eslint-disable-line
 
-
-/* 
+/*
  * Create a route to GET our TODO items
-*/
-api.get('/todos', async (req, res) => {
+ */
+api.get("/todos", async (req, res, next) => {
+  try {
+    // Call our getTodos function with the status
+    let result = await getTodos(req.query.status, req.query.meta ? true : {});
 
-  // Call our getTodos function with the status
-  let result = await getTodos(req.query.status, req.query.meta ? true : {});
+    // Return the results
+    res.send({
+      items: result.items,
+    });
+  } catch (e) {
+    next(e);
+  }
+});
 
-  // Return the results
-  res.send({
-    items: result.items
-  })
-})
-
-/* 
+/*
  * Create a route to POST updates to a TODO item
-*/
-api.post('/todos/:id', async (req, res) => {
-  
-  console.log(new Date().toISOString());
+ */
+api.post("/todos/:id", async (req, res, next) => {
+  try {
+    console.log(new Date().toISOString());
 
-  let body = req.body
+    let body = req.body;
 
-  if (body.duedate) { body.duedate = new Date(body.duedate).toISOString()}
+    if (body.duedate) {
+      body.duedate = new Date(body.duedate).toISOString();
+    }
 
-  await data.set(
-    `todo:${req.params.id}`,
-    {
-      ...body,
-      createdAt: Date.now()
-    },
-    Object.assign({},
-      req.body.status ? 
-        { 
-          label1: body.status === 'complete' ? 
-            `complete:${new Date().toISOString()}` 
-            : `incomplete:${body.duedate ? body.duedate : '9999' }` }
-        : null
-    )
-  )
-  
-  // Query all the TODOs again
-  let result = await getTodos(req.query.status);
+    await data.set(
+      `todo:${req.params.id}`,
+      {
+        ...body,
+        createdAt: Date.now(),
+      },
+      Object.assign(
+        {},
+        req.body.status
+          ? {
+              label1:
+                body.status === "complete"
+                  ? `complete:${new Date().toISOString()}`
+                  : `incomplete:${body.duedate ? body.duedate : "9999"}`,
+            }
+          : null
+      )
+    );
 
-  // Return the updated list of TODOs
-  res.send({
-    items: result.items
-  })
-})
+    // Query all the TODOs again
+    let result = await getTodos(req.query.status);
 
-/* 
+    // Return the updated list of TODOs
+    res.send({
+      items: result.items,
+    });
+  } catch (e) {
+    next(e);
+  }
+});
+
+/*
  * Create a route to DELETE a TODO item
-*/
-api.delete('/todos/:id', async (req, res) => {
-  
-  await data.remove(`todo:${req.params.id}`)
-  
-  // Query all the TODOs again
-  let result = await getTodos(req.query.status);
+ */
+api.delete("/todos/:id", async (req, res, next) => {
+  try {
+    await data.remove(`todo:${req.params.id}`);
 
-  // Return the updated list of TODOs
-  res.send({
-    items: result.items
-  })
-})
+    // Query all the TODOs again
+    let result = await getTodos(req.query.status);
 
+    // Return the updated list of TODOs
+    res.send({
+      items: result.items,
+    });
+  } catch (e) {
+    next(e);
+  }
+});
 
 /*
   This is some custom error handler middleware
@@ -108,7 +120,10 @@ schedule.every("60 minutes", async () => {
   console.log(`Checking for overdue TODOs...`);
 
   // Look for items that are overdue
-  let overdueItems = await data.getByLabel('label1',`incomplete:<${new Date().toISOString()}`)
+  let overdueItems = await data.getByLabel(
+    "label1",
+    `incomplete:<${new Date().toISOString()}`
+  );
 
   if (overdueItems.items.length === 0) {
     console.log(`Nothing overdue!`);
@@ -121,21 +136,20 @@ schedule.every("60 minutes", async () => {
   }
 });
 
-
 /*
   This is our getTodos function that we can reuse in different API paths 
 */
 const getTodos = async (status, meta) => {
   let result;
-  if (status === 'all') {
-    result = await data.get('todo:*', meta)
-  } else if (status === 'complete') {
-    result =  await data.getByLabel('label1','complete:*', meta)
+  if (status === "all") {
+    result = await data.get("todo:*", meta);
+  } else if (status === "complete") {
+    result = await data.getByLabel("label1", "complete:*", meta);
   } else {
-    result = await data.getByLabel('label1','incomplete:*', meta)
+    result = await data.getByLabel("label1", "incomplete:*", meta);
   }
 
   return {
-    items: result.items.map(item => item.value)
-  }
-}
+    items: result.items.map((item) => item.value),
+  };
+};
