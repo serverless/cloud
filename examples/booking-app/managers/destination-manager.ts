@@ -48,7 +48,7 @@ const verifyNewDestination = (params: any): NewDestination => {
     }
 
     if (!params.city) {
-        throw new Error('State Required')
+        throw new Error('City Required')
     }
 
     if (!params.costPerNightInCents) {
