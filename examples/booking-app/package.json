@@ -1,0 +1,19 @@
+{
+  "name": "booking-app",
+  "version": "1.0.0",
+  "description": "A simple booking app",
+  "main": "index.ts",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.5.1",
+    "luxon": "^2.0.1",
+    "ramda": "^0.27.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "@types/luxon": "^1.27.1",
+    "@types/node": "16.4.3",
+    "@types/ramda": "^0.27.44"
+  }
+}
