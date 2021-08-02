@@ -13,7 +13,6 @@ let user1: ReadableUser
 let user1Token: string
 
 beforeAll(async () => {
-    console.log('HELLO??')
     destination1 = await DestinationManager.createDestination({
        name: 'Test House',
        state: 'TX',

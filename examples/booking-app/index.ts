@@ -206,10 +206,6 @@ api.delete('/booking/:id', async (req, res) => {
   })
 })
 
-
-/*
-  This is some custom error handler middleware
-*/
 // eslint-disable-next-line
 api.use((err, req, res, next) => {
 
@@ -226,42 +222,3 @@ api.use((err, req, res, next) => {
   res.status(err.statusCode).json(error);
 });
 
-/*
-  Sometimes you might want to run code on a schedule, like if you want to 
-  send alerts when items are overdue.
-*/
-// schedule.every("60 minutes", async () => {
-//   console.log(`Checking for overdue TODOs...`);
-//
-//   // Look for items that are overdue
-//   let overdueItems = await data.getByLabel('label1',`incomplete:<${new Date().toISOString()}`)
-//
-//   if (overdueItems.items.length === 0) {
-//     console.log(`Nothing overdue!`);
-//   }
-//
-//   // Loop through the overdue items
-//   for (let item of overdueItems.items) {
-//     // Here we could send an alert
-//     console.log(`ALERT: '${item.value.name}' is overdue!!!`);
-//   }
-// });
-
-
-/*
-  This is our getTodos function that we can reuse in different API paths 
-*/
-// const getTodos = async (status, meta) => {
-//   let result;
-//   if (status === 'all') {
-//     result = await data.get('todo:*', meta)
-//   } else if (status === 'complete') {
-//     result =  await data.getByLabel('label1','complete:*', meta)
-//   } else {
-//     result = await data.getByLabel('label1','incomplete:*', meta)
-//   }
-//
-//   return {
-//     items: result.items.map(item => item.value)
-//   }
-// }
