@@ -82,7 +82,7 @@ const calculateCost = async (id: string, startDate: string, endDate: string): Pr
 
     const { costPerNightInCents } = destination
     const start = DateTime.fromFormat(startDate, 'yyyy-MM-dd')
-    const end = DateTime.fromFormat(endDate, 'yyyy-MM-dd').minus({ days: 1 })
+    const end = DateTime.fromFormat(endDate, 'yyyy-MM-dd').minus({ days: 1 }) // cost is per night
     if (!start.isValid || !end.isValid) {
         throw new Error(DestinationErrors.INVALID_DATE)
     }
