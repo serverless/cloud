@@ -35,7 +35,7 @@ beforeAll(async () => {
         `destination:${destination2.id}`,
         { available: false },
         {
-            label1: `available:false`
+            label2: `available:false`
         }
     )
 
@@ -64,12 +64,12 @@ describe('API Tests', () => {
         })
 
         test('Should return list of available destinations', async () => {
-            const { body } = await api.get('/destination/available').invoke()
+            const { body } = await api.get('/destinations/available').invoke()
             expect(body.destinations.length).toEqual(1)
         })
 
         test('Should return list of all destinations', async () => {
-            const { body } = await api.get('/destination/available').invoke()
+            const { body } = await api.get('/destinations').invoke()
             expect(body.destinations.length).toEqual(2)
         })
     })
