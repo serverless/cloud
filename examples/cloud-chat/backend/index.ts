@@ -1,4 +1,3 @@
-// @ts-ignore
 import { api } from "@serverless/cloud";
 import { auth } from "./middleware/auth";
 import { user } from "./middleware/user";
