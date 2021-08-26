@@ -1,4 +1,3 @@
-// @ts-ignore
 import { data } from "@serverless/cloud";
 import ksuid from "ksuid";
 import { geo, GeoPoint, Rect } from "./geo";

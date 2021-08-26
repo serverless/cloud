@@ -1,4 +1,3 @@
-// @ts-ignore
 import { api, data } from "@serverless/cloud";
 
 beforeAll(async () => {

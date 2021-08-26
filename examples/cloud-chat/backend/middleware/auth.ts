@@ -1,4 +1,3 @@
-//@ts-ignore
 import { params } from "@serverless/cloud";
 import jwt from "express-jwt";
 import jwks from "jwks-rsa";
