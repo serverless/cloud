@@ -1,4 +1,3 @@
-// @ts-ignore
 import { params } from '@serverless/cloud'
 import jwt from 'jsonwebtoken'
 import { ReadableUser } from './managers/user-manager'

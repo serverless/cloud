@@ -15,5 +15,9 @@
     "@types/luxon": "^1.27.1",
     "@types/node": "16.4.3",
     "@types/ramda": "^0.27.44"
+  },
+  "serverless": {
+    "org": "benminer",
+    "service": "booking-app"
   }
 }

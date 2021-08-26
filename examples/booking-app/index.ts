@@ -1,9 +1,14 @@
-// @ts-ignore
-import { api, data, schedule } from '@serverless/cloud'
+import { api, Request } from '@serverless/cloud'
 import { BookingErrors, BookingManager } from './managers/booking-manager'
 import { DestinationErrors, DestinationManager } from './managers/destination-manager'
 import { UserErrors, UserManager } from './managers/user-manager'
 import { Auth } from './auth'
+
+type RequestWithToken = Request & {
+  decoded: {
+    id: string
+  }
+}
 
 api.use('/booking/*', Auth.middleware)
 
@@ -78,8 +83,8 @@ api.post('/login', async (req, res) => {
 
 api.get('/destination/:id/cost', async (req, res) => {
   const destinationId = req.params.id
-  const startDate = req.query.startDate
-  const endDate = req.query.endDate
+  const startDate = String(req.query.startDate)
+  const endDate = String(req.query.endDate)
 
   if (!startDate || !endDate) {
     return res.status(400).send({
@@ -131,7 +136,7 @@ api.get('/destinations/available', async (req, res) => {
   })
 })
 
-api.get('/booking/list', async (req, res) => {
+api.get('/booking/list', async (req: RequestWithToken, res) => {
   const userId = req.decoded.id
 
   if (!userId) {
@@ -152,7 +157,7 @@ api.get('/booking/list', async (req, res) => {
   }
 })
 
-api.put('/booking/new', async (req, res) => {
+api.put('/booking/new', async (req: RequestWithToken, res) => {
   const body = req.body
   if (!body) {
     return res.status(400).send({
@@ -181,7 +186,7 @@ api.put('/booking/new', async (req, res) => {
   } finally {}
 })
 
-api.delete('/booking/:id', async (req, res) => {
+api.delete('/booking/:id', async (req: RequestWithToken, res) => {
   const userId = req.decoded.id
   const bookingId = req.params.id
 
