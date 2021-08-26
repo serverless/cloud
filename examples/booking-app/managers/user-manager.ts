@@ -1,4 +1,3 @@
-// @ts-ignore
 import { data, params } from '@serverless/cloud'
 import { v4 } from 'uuid'
 import { omit } from 'ramda'
