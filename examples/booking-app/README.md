@@ -44,7 +44,7 @@ Next, start your Serverless Cloud experience with the `start` command...
 npm start
 ```
 
-Finally, you'll need to set the `TOKEN_SECRET` param in the [Serverless Cloud Dashboard](https://cloud.serverless.com) to any strong value of your choice. This will be what user's passwords are hashed with.
+Finally, you'll need to set the `TOKEN_SECRET` param in the [Serverless Cloud Dashboard](https://cloud.serverless.com) to any strong value of your choice. This will be what user's tokens are signed with.
 
 Seed some data by running 
 ```
