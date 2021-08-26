@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "2c74fc53-4bbf-40c6-9ed8-e984f13554a6",
+		"name": "Booking App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Delete Booking",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN_1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/booking/fae32644-28ce-4df3-b6e1-718f0fdcd340",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"booking",
+						"fae32644-28ce-4df3-b6e1-718f0fdcd340"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bookings for User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN_1}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{URL}}/booking/list",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"booking",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"ben@test.com\",\n    \"password\": \"testing123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/login",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sign up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"ben@test.com\",\n    \"firstName\": \"ben\",\n    \"lastName\": \"miner\",\n    \"password\": \"testing123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/signup",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Booking",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{AUTH_TOKEN_1}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"startDate\": \"2021-07-15\",\n    \"endDate\": \"2021-07-29\",\n    \"destinationId\": \"3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}/booking/new",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"booking",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Available Destinations",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/destinations/available",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"destinations",
+						"available"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Destinations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/destinations/",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"destinations",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Stay Cost ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/destination/1/cost?startDate=2021-07-01&endDate=2021-07-27",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"destination",
+						"1",
+						"cost"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": "2021-07-01"
+						},
+						{
+							"key": "endDate",
+							"value": "2021-07-27"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Destination By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}/destination/1",
+					"host": [
+						"{{URL}}"
+					],
+					"path": [
+						"destination",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

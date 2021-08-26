@@ -32,7 +32,7 @@ const getById = async (id: string): Promise<Optional<Destination>> => {
 }
 
 const getAvailable = async (): Promise<Destination[]> => {
-    const availDestinations = await data.getByLabel<Destination>('label2', 1323)
+    const availDestinations = await data.getByLabel<Destination>('label2', 'available:true')
     return (availDestinations.items || []).map(prop('value'))
 }
 

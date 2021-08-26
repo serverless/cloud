@@ -26,26 +26,30 @@ The Serverless Booking App
 
 **Serverless Booking App**
 
-To get started, clone this repo, and navigate into the `src` directory...
+To get started, clone this repo, and navigate into the `examples/booking-app` directory...
 
 ```
-git clone https://github.com/serverless/status.git
-cd src
+git clone git@github.com:serverless/cloud.git
+cd cloud/examples/booking-app
 ```
 
-Install the Cloud CLI (in package.json)
+Install the Cloud CLI (in package.json) and other dependencies
 ```
 npm i 
-```
-or install it globally with 
-```
-npm i -g @serverless/cloud
 ```
 
 Next, start your Serverless Cloud experience with the `start` command...
 
 ```
-npm start or cloud start
+npm start
 ```
 
 Finally, you'll need to set the `TOKEN_SECRET` param in the [Serverless Cloud Dashboard](https://cloud.serverless.com) to any strong value of your choice. This will be what user's passwords are hashed with.
+
+Seed some data by running 
+```
+import --overwrite
+```
+while in Interactive mode.
+
+To try some endpoints out, open up the Postman collection and set the URL parameter to the one displayed in your terminal.

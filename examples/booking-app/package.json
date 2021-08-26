@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A simple booking app",
   "main": "index.ts",
+  "scripts": {
+    "start": "cloud",
+    "test": "cloud test"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "jsonwebtoken": "^8.5.1",
@@ -11,6 +15,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@serverless/cloud": "^0.0.22",
     "@types/jest": "^26.0.24",
     "@types/luxon": "^1.27.1",
     "@types/node": "16.4.3",

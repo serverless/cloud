@@ -1,4 +1,3 @@
-// @ts-ignore
 import { data } from '@serverless/cloud'
 import { DateTime } from 'luxon'
 import { v4 } from 'uuid'
