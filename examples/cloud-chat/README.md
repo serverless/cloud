@@ -1,9 +1,48 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p align="center">
+⚡️
+<br>
+<br>
+<b>cloud.serverless.com</b>
+<br>
+Cloud Chat
+</p>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+**Cloud Chat**
+
+
 [Cloud Chat](https://distributed-source-t9cms.cloud.serverless.com) is an iMessage-inspired chat application built on [Serverless ⚡️ Cloud](https://serverless.github.io/cloud/).
 
 Find friends on the map and then start chatting. It's a fun way to make new friends from around the world. Be nice! 😀
-
 # Developing
+## Getting Started
+Clone this repo, and navigate into the `examples/cloud-chat` directory...
 
+```
+git clone git@github.com:serverless/cloud.git
+cd cloud/examples/cloud-chat
+```
+
+Install the Cloud CLI (in package.json) and other dependencies
+```
+npm i 
+```
 ## Setting up Auth0
 
 - create an API
@@ -21,6 +60,8 @@ Create the following params in the [Serverless Cloud Dashboard](https://cloud.se
 
 - AUTH0_DOMAIN: "Domain" from your Auth0 application settings
 - AUTH0_AUDIENCE: "Identifier" from your Auth0 API settings
+
+Note - you will need to have run "npm start" or "cloud" to have your cloud-chat instance appear.
 
 ## Local dev
 
