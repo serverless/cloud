@@ -1,0 +1,6 @@
+{
+  "name": "serverless-status-page",
+  "version": "1.0.0",
+  "description": "The Serverless Status Dashboard",
+  "main": "api.js"
+}

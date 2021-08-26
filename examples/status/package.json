@@ -1,0 +1,39 @@
+{
+  "name": "status.serverless.com",
+  "version": "0.1.0",
+  "description": "Serverless Status page",
+  "main": "./index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "cloud",
+    "test": "cloud test"
+  },
+  "author": "Serverless, Inc.",
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "eslintConfig": {
+    "extends": "@serverless/eslint-config/node",
+    "root": true,
+    "rules": {
+      "no-console": "off",
+      "no-underscore-dangle": "off"
+    }
+  },
+  "eslintIgnore": [
+    "!/.github",
+    "/templates"
+  ],
+  "devDependencies": {
+    "@serverless/cloud": "^0.0.22",
+    "@serverless/eslint-config": "^3.0.0",
+    "eslint": "^7.17.0",
+    "eslint-plugin-import": "^2.22.1",
+    "git-list-updated": "^1.2.1",
+    "github-release-from-cc-changelog": "^2.2.0",
+    "prettier": "^2.2.1"
+  }
+}
