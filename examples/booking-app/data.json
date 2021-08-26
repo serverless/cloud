@@ -1,0 +1,114 @@
+[
+  {
+    "key": "destination:1",
+    "value": { 
+      "id": "1", 
+      "name": "Cool Treehouse in the forest",
+      "description": "Cool Treehouse in the forest",
+      "state": "North Carolina",
+      "city": "Canton",
+      "costPerNightInCents": 10400,
+      "maxGuests": 4,
+      "available": true,
+      "createdAt": "2021-07-01T12:00:00.000Z"
+    },
+    "label1": "cost:10400",
+    "label2": "available:true"
+  },
+  {
+    "key": "destination:2",
+    "value": { 
+      "id": "2",
+      "name": "Hotel Max",
+      "description": "Hotel Max",
+      "state": "Washington",
+      "city": "Seattle",
+      "costPerNightInCents": 22000,
+      "maxGuests": 2,
+      "available":  true,
+      "createdAt": "2021-07-05T12:00:00.000Z"
+    },
+    "label1": "cost:22000",
+    "label2": "available:true"
+  },
+  {
+    "key": "destination:3",
+    "value": { 
+      "id": "3",
+      "name": "Ace Motel",
+      "description": "Ace Motel",
+      "state": "New York City",
+      "city": "New York",
+      "costPerNightInCents": 20400,
+      "maxGuests": 4,
+      "available": true,
+      "createdAt": "2021-07-10T12:00:00.000Z"
+    },
+    "label1": "cost:20400",
+    "label2": "available:true"
+  },
+  {
+    "key": "destination:4",
+    "value": { 
+      "id": "4", 
+      "name": "The Greenhouse",
+      "description": "The Greenhouse",
+      "state": "Nashville",
+      "city": "Tennessee",
+      "costPerNightInCents": 8000,
+      "maxGuests": 2,
+      "available": true,
+      "createdAt": "2021-07-09T12:00:00.000Z"
+    },
+    "label1": "cost:8000",
+    "label2": "available:true"
+  },
+  {
+    "key": "destination:5",
+    "value": {
+      "id": "5",
+      "name": "Kasa Austin",
+      "description": "Kasa Austin",
+      "state": "Austin",
+      "city": "Texas",
+      "costPerNightInCents": 10000,
+      "maxGuests": 2,
+      "available": true,
+      "createdAt": "2021-07-12T12:00:00.000Z"
+    },
+    "label1": "cost:10000",
+    "label2": "available:true"
+  },
+  {
+    "key": "destination:6",
+    "value": {
+      "id": "6",
+      "name": "Santa Fe Art District Room",
+      "description": "Santa Fe Art District Room",
+      "state": "Denver",
+      "city": "Colorado",
+      "costPerNightInCents": 12000,
+      "maxGuests": 2,
+      "available": true,
+      "createdAt": "2021-07-15T12:00:00.000Z"
+    },
+    "label1": "cost:12000",
+    "label2": "available:true"
+  },
+  {
+    "key": "destination:7",
+    "value": {
+      "id": "7",
+      "name": "Rocky Butte Boho Retreat",
+      "description": "Rocky Butte Boho Retreat",
+      "state": "Portland",
+      "city": "Oregon",
+      "costPerNightInCents": 20000,
+      "maxGuests": 2,
+      "available": false,
+      "createdAt": "2021-07-15T12:00:00.000Z"
+    },
+    "label1": "cost:20000",
+    "label2": "available:false"
+  }
+]
