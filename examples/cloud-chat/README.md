@@ -36,7 +36,7 @@ Clone this repo, and navigate into the `examples/cloud-chat` directory...
 
 ```
 git clone git@github.com:serverless/cloud.git
-cd cloud/examples/cloud-chat
+cd cloud/examples/cloud-chat/backend
 ```
 
 Install the Cloud CLI (in package.json) and other dependencies

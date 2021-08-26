@@ -26,23 +26,23 @@ The Serverless Status Page
 
 **Serverless Status** ⎯⎯⎯ The Serverless Status Page, powered by [Serverless Cloud](https://serverless.com/cloud). You can see a live demo [at this link](https://magical-package-m2777.cloud.serverless.com/).
 
+To get started, clone this repo, and navigate into the `src` directory...
+
+```
+git clone https://github.com/serverless/cloud.git
+cd cloud/examples/status/src
+```
+
 To get started, make sure the Serverless Cloud CLI is installed...
 
 ```
-npm i -g @serverless/cloud
-```
-
-Then, clone this repo, and navigate into the `src` directory...
-
-```
-git clone https://github.com/serverless/status.git
-cd src
+npm i 
 ```
 
 Next, start your Serverless Cloud experience with the `start` command...
 
 ```
-cloud start
+npm start
 ```
 
 Finally, you'll need to set the `ADMIN_PASSWORD` param in the [Serverless Cloud Dashboard](https://cloud.serverless.com) to any strong value of your choice. This will be the password you'll use to access the admin page.

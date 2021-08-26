@@ -1,7 +1,7 @@
 {
-  "name": "starter-service",
+  "name": "todo",
   "version": "1.0.0",
-  "description": "Default Serverless Cloud service",
+  "description": "Serverless Cloud todo api",
   "main": "index.js",
   "type": "module",
   "scripts": {
