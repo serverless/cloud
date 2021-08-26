@@ -1,0 +1,16 @@
+{
+  "name": "cloud-chat",
+  "type": "module",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express-jwt": "^6.0.0",
+    "jwks-rsa": "^2.0.4",
+    "ksuid": "^2.0.0",
+    "long": "^4.0.0",
+    "nodes2ts": "^2.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.24"
+  }
+}

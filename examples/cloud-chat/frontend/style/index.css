@@ -1,0 +1,9 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+.v-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
