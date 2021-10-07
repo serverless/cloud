@@ -3,7 +3,8 @@
   "type": "module",
   "scripts": {
     "start": "cloud",
-    "test": "cloud test"
+    "test": "cloud test",
+    "postinstall": "pushd frontend; npm run build; popd; rm -rf static && cp -R frontend/out static"
   },
   "main": "./backend/index.ts",
   "dependencies": {
@@ -16,7 +17,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@serverless/cloud": "^2.0.0",
+    "@serverless/cloud": "^2.2.2",
     "@types/jest": "^26.0.24"
   }
 }

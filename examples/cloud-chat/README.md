@@ -61,6 +61,8 @@ Create the following params in the [Serverless Cloud Dashboard](https://cloud.se
 - AUTH0_DOMAIN: "Domain" from your Auth0 application settings
 - AUTH0_AUDIENCE: "Identifier" from your Auth0 API settings
 
+Once set, paste your instance URL into the `Application/Settings/Allowed Callback URL's` in Auth0's Dashboard.
+
 Note - you will need to have run "npm start" or "cloud" to have your cloud-chat instance appear.
 
 ## Local dev
