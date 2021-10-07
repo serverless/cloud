@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "cloud",
-    "test": "cloud test"
+    "test": "cloud test",
+    "postinstall": "pushd frontend; npm run build; popd"
   },
   "devDependencies": {
     "@jest/globals": "^27.1.0",
