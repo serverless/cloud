@@ -1,13 +1,26 @@
 import { api, data } from "@serverless/cloud";
+import { jest } from "@jest/globals";
+import jwt from "jsonwebtoken";
 
 beforeAll(async () => {
+  jest.spyOn(jwt, "verify").mockImplementation(() => ({
+    id: "b23b3aeb-15aa-5527-9e4f-7094fe053410",
+    username: "rschick",
+  }));
+
+  await data.set("user:b23b3aeb-15aa-5527-9e4f-7094fe053410", {
+    id: "b23b3aeb-15aa-5527-9e4f-7094fe053410",
+    name: "Russ Schick",
+    username: "rschick",
+  });
+
   await data.set("user:7215ce0f-20a3-4b56-a0fb-00161f42f4f8", {
     geohash: "5486f83fc32b3bcf",
     id: "7215ce0f-20a3-4b56-a0fb-00161f42f4f8",
     lat: 49.7041763,
     lon: -123.15608540000001,
     name: "Another User",
-    sub: "test-user|99999999",
+    username: "rschick",
     picture: "another-picture-url",
   });
 });
@@ -35,8 +48,8 @@ afterAll(async () => {
   ]);
 });
 
-test("should create user and update profile", async () => {
-  const { body } = await api.put("/me").invoke({
+test("should update profile", async () => {
+  const { body, status } = await api.put("/me").invoke({
     lat: 49.7041763,
     lon: -123.15608540000001,
     name: "Test User",
@@ -51,7 +64,7 @@ test("should create user and update profile", async () => {
     lon: -123.15608540000001,
     name: "Test User",
     other_property: "something",
-    sub: "cloud-auth0-mock|123456789",
+    username: "rschick",
     picture: "test-picture-url",
   });
 });
@@ -68,7 +81,7 @@ test("should get a user by id", async () => {
     lon: -123.15608540000001,
     name: "Test User",
     other_property: "something",
-    sub: "cloud-auth0-mock|123456789",
+    username: "rschick",
     picture: "test-picture-url",
   });
 });
@@ -143,7 +156,7 @@ test("should get nearby users", async () => {
       lon: -123.15608540000001,
       name: "Test User",
       other_property: "something",
-      sub: "cloud-auth0-mock|123456789",
+      username: "rschick",
       picture: "test-picture-url",
     },
   });

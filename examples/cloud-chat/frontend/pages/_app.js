@@ -2,10 +2,6 @@ import Head from "next/head";
 
 import "../style/index.css";
 
-import auth from "../state/auth";
-
-auth.init();
-
 function SafeHydrate({ children }) {
   return (
     <div suppressHydrationWarning>

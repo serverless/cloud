@@ -1,127 +1,70 @@
 import { proxy } from "valtio";
 
-import createAuth0Client from "@auth0/auth0-spa-js";
-import {
-  NEXT_PUBLIC_AUTH0_DOMAIN,
-  NEXT_PUBLIC_AUTH0_CLIENT_ID,
-  NEXT_PUBLIC_AUTH0_AUDIENCE,
-  NEXT_PUBLIC_API_URL,
-  NEXT_PUBLIC_APP_URL,
-} from "./config";
-
-const CODE_RE = /[?&]code=[^&]+/;
-const STATE_RE = /[?&]state=[^&]+/;
-const ERROR_RE = /[?&]error=[^&]+/;
-
-export const hasAuthParams = (searchParams = window.location.search) =>
-  (CODE_RE.test(searchParams) || ERROR_RE.test(searchParams)) &&
-  STATE_RE.test(searchParams);
-
-let auth0;
+import { NEXT_PUBLIC_API_URL } from "./config";
 
 class Auth {
   user;
   isAuthenticated = false;
-  isLoading = true;
   error;
   position;
+  systemWarning;
 
-  async init() {
-    if (typeof window === "undefined") {
-      this.isLoading = false;
-      return;
-    }
-
-    if (auth0) {
-      return;
-    }
-
-    auth0 = await createAuth0Client({
-      domain: NEXT_PUBLIC_AUTH0_DOMAIN,
-      client_id: NEXT_PUBLIC_AUTH0_CLIENT_ID,
-      audience: NEXT_PUBLIC_AUTH0_AUDIENCE,
-      redirect_uri: NEXT_PUBLIC_APP_URL,
-      scope: "openid email profile",
-      useRefreshTokens: true,
-      cacheLocation: "localstorage",
+  async login({ username, password }) {
+    const response = await fetch(`${NEXT_PUBLIC_API_URL}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
     });
 
-    try {
-      if (hasAuthParams()) {
-        const { appState } = await auth0.handleRedirectCallback();
-        window.history.replaceState(
-          {},
-          document.title,
-          appState?.returnTo || window.location.pathname
-        );
-      } else {
-        await auth0.checkSession();
-      }
-      this.user = await this.getUser();
-      if (this.user) {
-        this.isAuthenticated = true;
-        this.watchPosition();
-      }
-      this.isLoading = false;
-      this.error = undefined;
-    } catch (error) {
-      console.log(error);
-      this.error = error;
-      this.user = undefined;
-      this.isAuthenticated = false;
-      this.isLoading = false;
+    const { token, user, message, systemWarning } = await response.json();
+    if (token) {
+      this.token = token;
+      this.user = user;
+      this.isAuthenticated = true;
+      this.watchPosition();
     }
+    this.error = message;
+    this.systemWarning = systemWarning;
   }
 
-  async getToken() {
-    return auth0.getTokenSilently();
-  }
+  async register({ username, password, name }) {
+    const response = await fetch(`${NEXT_PUBLIC_API_URL}/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password, name }),
+    });
 
-  async login() {
-    await auth0.loginWithRedirect();
+    const { token, user, message, systemWarning } = await response.json();
+    if (token) {
+      this.token = token;
+      this.user = user;
+      this.isAuthenticated = true;
+      this.watchPosition();
+    }
+    this.error = message;
+    this.systemWarning = systemWarning;
   }
 
   async logout() {
-    auth0.logout({
-      returnTo: NEXT_PUBLIC_APP_URL,
-    });
+    this.token = undefined;
     this.user = undefined;
     this.isAuthenticated = false;
-    this.isLoading = true;
     this.error = undefined;
   }
 
-  async getUser() {
-    const identity = await auth0.getUser();
-    if (!identity) {
-      return;
-    }
-    const token = await this.getToken();
-    const response = await fetch(`${NEXT_PUBLIC_API_URL}/me`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(identity),
-    });
-
-    const user = await response.json();
-
-    return user;
+  getToken() {
+    return this.token;
   }
 
   async updatePosition() {
-    const identity = await auth0.getUser();
-    if (!identity) {
-      return;
-    }
-
-    const token = await this.getToken();
     const response = await fetch(`${NEXT_PUBLIC_API_URL}/me`, {
       method: "PUT",
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${this.token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(this.position),

@@ -1,12 +1,32 @@
 import { api } from "@serverless/cloud";
-import { auth } from "./middleware/auth";
-import { user } from "./middleware/user";
 import cors from "cors";
-import data from "./lib/data";
+
+import * as data from "./lib/data";
+import { login, register, auth } from "./middleware/auth";
 
 api.use(cors());
+
+api.get("/health", async (req, res) => {
+  res.send({ status: "ok" });
+});
+
+api.post("/login", login(), async function (req: any, res: any) {
+  res.send({
+    token: req.token,
+    user: req.user,
+    systemWarning: req.systemWarning,
+  });
+});
+
+api.post("/register", register(), async function (req: any, res) {
+  res.send({
+    token: req.token,
+    user: req.user,
+    systemWarning: req.systemWarning,
+  });
+});
+
 api.use(auth());
-api.use(user());
 
 api.get("/messages", async (req, res) => {
   const result = await data.getMessages(req.query.convId);
@@ -37,9 +57,8 @@ api.put("/typing", async (req, res) => {
   res.status(200).end();
 });
 
-api.put("/me", async (req, res) => {
-  await data.updateUser(req.user, req.body);
-  const user = await data.getUser(req.user.id);
+api.put("/me", async (req: any, res) => {
+  const user = await data.updateUser(req.user.id, req.body);
   res.json(user);
 });
 

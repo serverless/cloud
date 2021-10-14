@@ -2,6 +2,10 @@ import { data } from "@serverless/cloud";
 import ksuid from "ksuid";
 import { geo, GeoPoint, Rect } from "./geo";
 import { v5 as uuidv5 } from "uuid";
+import crypto from "crypto";
+import util from "util";
+
+const pbkdf2 = util.promisify(crypto.pbkdf2);
 
 const USER_UUID_NAMESPACE = "9738E54D-3350-402B-9849-35F0ECEB772C";
 
@@ -24,18 +28,15 @@ export interface Conversation {
   };
 }
 
-export interface ChatState {
-  convId: ConversationId;
-  messages: ItemList<Message>;
-  conversations: ItemList<Conversation>;
-}
-
 export type UserId = string;
 
 export interface User {
   id: UserId;
+  username: string;
   name: string;
   picture: string;
+  hashedPassword: string;
+  salt: string;
 }
 
 export interface ItemList<T> {
@@ -43,7 +44,7 @@ export interface ItemList<T> {
 }
 
 export async function getConversations(userId: UserId) {
-  const { items } = await data.get(`user_${userId}:conv_*`);
+  const { items } = (await data.get(`user_${userId}:conv_*`)) as any;
   for (const item of items) {
     item.value.userIds = JSON.parse(item.value.userIds);
   }
@@ -88,7 +89,7 @@ export async function createConversation(
 
   // Create a conversation item for each user
   await Promise.all(
-    users.map((user) => createUserConversation(convId, user, users))
+    users.map((user: any) => createUserConversation(convId, user, users))
   );
 
   return { value: { convId } };
@@ -108,57 +109,70 @@ export async function sendMessage(
     text,
   };
 
+  await data.set(`conv_${convId}:msg_${message.id}`, message);
+
+  return { value: message };
+}
+
+data.on("created:conv_*:msg_*", async ({ item }) => {
+  const { convId, text } = item.value;
+
   const { items: userConversations } = await data.getByLabel(
     "label1",
     `conv_${convId}:user_*`
   );
 
-  const mtime = new Date().toISOString();
-  await Promise.all([
-    data.set(`conv_${convId}:msg_${message.id}`, message),
-    ...userConversations.map(({ value }) =>
-      data.set(`user_${value.userId}:conv_${value.convId}`, {
+  await Promise.all(
+    userConversations.map(async ({ value }) => {
+      await data.set(`user_${value.userId}:conv_${convId}`, {
         last: text,
-        mtime,
-      })
-    ),
-  ]);
+        mtime: item.modified,
+      });
+    })
+  );
+});
 
-  return { value: message };
+export async function createUser({ username, name, password }): Promise<User> {
+  const userId = uuidv5(username, USER_UUID_NAMESPACE);
+
+  const salt = crypto.randomBytes(16).toString();
+
+  const hashedPassword = (
+    await pbkdf2(password, salt, 310000, 32, "sha256")
+  ).toString();
+
+  const result = (await data.set(`user:${userId}`, {
+    id: userId,
+    username,
+    name,
+    hashedPassword,
+    salt,
+  })) as User;
+
+  return result;
 }
 
 export async function getUser(userId: UserId): Promise<User> {
-  return data.get(`user:${userId}`);
+  return (await data.get(`user:${userId}`)) as unknown as User;
 }
 
 export async function getUserForSub(sub: string): Promise<User> {
   const userId = uuidv5(sub, USER_UUID_NAMESPACE);
 
-  let user = await data.get(`user:${userId}`);
-
-  try {
-    if (!user) {
-      user = { id: userId, sub };
-      await data.set(`user:${userId}`, user);
-    }
-  } catch (error) {
-    throw error;
-  }
-
-  return user;
+  return (await data.get(`user:${userId}`)) as unknown as User;
 }
 
-export async function updateUser(user: User, props: any) {
+export async function updateUser(userId: User, props: any) {
   const geohash = props.lat && geo.hash(props.lat, props.lon);
-  await data.set(
-    `user:${user.id}`,
+  const user = await data.set(
+    `user:${userId}`,
     {
       ...props,
-      id: user.id,
       geohash,
     },
     geohash && { label1: `users:geo_${geohash}` }
   );
+  return user;
 }
 
 export async function listUsersInRect(rect: Rect): Promise<ItemList<User>> {
@@ -237,17 +251,3 @@ export async function setTyping(
       )
   );
 }
-
-export default {
-  createConversation,
-  sendMessage,
-  getConversations,
-  getMessages,
-  getUser,
-  getUserForSub,
-  updateUser,
-  listAllUsers,
-  listUsersInRect,
-  listUsersInCircle,
-  setTyping,
-};

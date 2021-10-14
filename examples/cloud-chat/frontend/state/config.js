@@ -1,9 +1,3 @@
-export const NEXT_PUBLIC_AUTH0_DOMAIN = process.env.NEXT_PUBLIC_AUTH0_DOMAIN;
-export const NEXT_PUBLIC_AUTH0_CLIENT_ID =
-  process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID;
-export const NEXT_PUBLIC_AUTH0_AUDIENCE =
-  process.env.NEXT_PUBLIC_AUTH0_AUDIENCE;
-
 export const NEXT_PUBLIC_APP_URL =
   typeof window === "undefined"
     ? ""
