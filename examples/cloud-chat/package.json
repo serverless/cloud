@@ -1,6 +1,29 @@
 {
   "name": "cloud-chat",
+  "type": "module",
+  "main": "index.ts",
   "scripts": {
-    "install": "npm i --prefix backend && npm i --prefix frontend"
+    "start": "cloud",
+    "build": "npm --prefix frontend run build",
+    "deploy": "cloud deploy production",
+    "test": "cloud test",
+    "postinstall": "npm i --prefix frontend"
+  },
+  "dependencies": {
+    "@jest/globals": "^27.2.5",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^8.5.1",
+    "ksuid": "^2.0.0",
+    "long": "^4.0.0",
+    "nodes2ts": "^2.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@serverless/cloud": "^2.0.0",
+    "@types/jest": "^27.0.2"
+  },
+  "serverless": {
+    "org": "rschick",
+    "app": "cloud-chat"
   }
 }

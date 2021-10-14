@@ -6,3 +6,4 @@ out/
 *.local
 .vscode
 .idea
+static

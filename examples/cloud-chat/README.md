@@ -51,33 +51,30 @@ npm i
 
 You can run the frontend on localhost and talk to the Cloud API.
 
-1. Run `npm start` in the backend folder
-1. Change `NEXT_PUBLIC_API_URL` in `.env.development` to be the personal instance URL that is displayed in the Cloud shell
+1. Run `npm start` in the `cloud-chat` root folder
+1. Note the URL of your personal instances
+1. Change `NEXT_PUBLIC_API_URL` in `frontend/.env.development` to your personal instance URL
 1. Run `npm start` in the frontend folder
-
-The app will be available at [http://localhost:3001](http://localhost:3001)
+1. Visit the app at [http://localhost:3001](http://localhost:3001)
 
 ## Personal instance
 
 To deploy the frontend to your personal instance:
 
-1. Run `npm run build` in the frontend folder
-1. Run `npm start` in the backend folder
-
-The frontend build output will be synced to your Cloud personal instance every time you build.
-
-The app will be available at your personal instance URL, eg. [https://elegant-package-huklr.cloud.serverless.com/](https://elegant-package-huklr.cloud.serverless.com/)
+1. Run `npm start` in the `cloud-chat` root folder
+1. Run `npm run build` in the frontend folder. The build output will be synced to your personal instance.
+1. Visit the app using your personal instance URL
 
 ## Deploy to production
 
 1. Run `npm run build` in the frontend folder
-1. Run `npx run deploy` in the backend folder
+1. Run `npx run deploy` in the `cloud-chat` root folder
 
 The app will be deployed to the `production` instance.
 
 ## Backend tests
 
-Run backend tests using `npm test` in the backend folder.
+Run backend tests using `npm test` in the `cloud-chat` root folder
 
 ## Token Secret
 

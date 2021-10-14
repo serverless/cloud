@@ -1,6 +1,6 @@
 import { params } from "@serverless/cloud";
 import crypto from "crypto";
-import { getUserForSub, createUser } from "../lib/data";
+import { getUserForSub, createUser } from "./data";
 import util from "util";
 import jwt from "jsonwebtoken";
 

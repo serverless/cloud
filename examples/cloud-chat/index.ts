@@ -2,7 +2,7 @@ import { api } from "@serverless/cloud";
 import cors from "cors";
 
 import * as data from "./lib/data";
-import { login, register, auth } from "./middleware/auth";
+import { login, register, auth } from "./lib/auth";
 
 api.use(cors());
 
