@@ -14,7 +14,7 @@ export default function Unauthenticated() {
   return (
     <div className="d-flex vh-100 align-items-center">
       <div className="d-flex vw-100 flex-column align-items-center gap-5">
-        <h1>Welcome to CloudChat</h1>
+        <h1>Welcome to CloudChat Demo!</h1>
         <form>
           {auth.error && (
             <div className="alert alert-primary" role="alert">
