@@ -227,6 +227,31 @@ let results = await data.remove("foo:bar");
 let results = await data.remove(["key1", "someOtherKey", "namespacedKey:keyX"]);
 ```
 
+## Saving binary data
+
+You can store binary data with Serverless Data, either associating it to a complete record or storing the file itself. 
+
+```javascript
+await data.set('user:${userId}`, { userId, username }, { file: Buffer.from(binaryData) })
+```
+
+When queried, the file buffer will be available in the `get` response
+
+```javascript
+const res = await data.get('user:1234')
+// { value: { userId: '1234', username: 'user1' }, file: binaryDataBuffer }
+```
+
+Standalone files can also be stored using data. Wildcard functionality can also be used.
+
+```javascript
+await data.set('file:prettyPicture.jpg', binaryDataBuffer)
+const res = data.get('file:prettyPicture.jpg')
+// { value: 'file:prettyPicture.jpg', file: binaryDataBuffer }
+```
+
+*NOTE* - this only applies to large files that cannot be saved with `data`. If a value is small enough, the binary string will be returned as the value. 
+
 ## Reacting to changes
 
 Serverless Data emits an event every time a data item is created, updated, or deleted, which you can react to by writing an event handler. This lets you decouple your application and process changes to your data asynchronously. For example your API could set data and then immediately send a response, while your event handler can do some data aggregation or send a request to an outside app.
