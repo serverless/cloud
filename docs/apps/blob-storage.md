@@ -12,7 +12,7 @@ Serverless Storage is a low profile, easy to use, file service that allows for f
 
 # Using Serverless Storage
 
-Access to Serverless Storage is automatically included in the runtime environment, just import the `storage` variable from `@serverless/cloud`. Note, all storage operations are asyncronous, so async/await or `.then` is required for their use.
+Access to Serverless Storage is automatically included in the runtime environment, just import the `storage` helper from `@serverless/cloud`. Note, all storage operations are asyncronous, so async/await or `.then` is required for their use.
 
 ```javascript
 // Require the data helper - CommonJS
