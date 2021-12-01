@@ -23,7 +23,7 @@ Serverless Cloud also supports serving static HTML pages:
 
 This also applies for sub-directories in the `static` directory. For example, a request for `/admin` will return `/static/admin/index.html` if it exists, and a request for `/admin/page` will return `/admin/page.html`.
 
-**NOTE:** Avoid having static pages that have corresponding HTML pages. For example, if you have a `/users` route, and also a `/static/users.html` page, Serverless Cloud will return the static page, and the API route will be unreachable.
+**NOTE:** Avoid having static pages that have corresponding API routes. For example, if you have a `/users` route, and also a `/static/users.html` page, Serverless Cloud will return the static page, and the API route will be unreachable.
 
 ## Custom server error pages
 
