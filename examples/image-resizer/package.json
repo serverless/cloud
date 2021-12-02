@@ -11,7 +11,7 @@
     "prettier": "prettier --write '**/**/*.[j,t]s'"
   },
   "devDependencies": {
-    "@serverless/cloud": "^2.0.0",
+    "@serverless/cloud": "^2.5.1",
     "@types/jest": "^26.0.24",
     "prettier": "^2.5.0"
   },

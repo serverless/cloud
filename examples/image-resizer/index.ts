@@ -36,11 +36,8 @@ api.upload('/api/new', async (req, res) => {
 api.upload('/api/resize', async (req, res) => {
   const width = parseInt(req.query.width as string)
   const height = parseInt(req.query.height as string)
-  const filename = req.query.filename as string
 
-  if (!width || !height) {
-    return res.status(400).send('Missing width or height')
-  }
+  const filename = req.query.filename as string
 
   if (!filename) {
     return res.status(400).send('Missing filename')
