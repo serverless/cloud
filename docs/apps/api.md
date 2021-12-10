@@ -123,18 +123,18 @@ API has a built in function for uploading files. `upload` takes both a route and
 
 ### Binary Body Uploads
 
-When uploading files as a binary body, information about the uploaded file will be available via the `req.file` field. This will include the `mimetype`, `size`, and `buffer`. The `buffer` can be passed directly to the `storage` interface to save the file.
+When uploading files as a binary body, information about the uploaded file will be available via the `req.files` array. This will include the `mimetype`, `size`, and `buffer`. The `buffer` can be passed directly to the `storage` interface to save the file.
 
 ```javascript
 api.upload("/upload", async (req, res) => {
-  await storage.write('my-uploaded-file', req.file.buffer);
+  await storage.write("my-uploaded-file", req.files[0].buffer);
   return res.sendStatus(200);
 });
 ```
 
 ### Multipart Form Data Uploads
 
-When uploading files from an HTML form (see below), API will automatically parse your files into a `req.files` array. Each item in the array will contain the `fieldname`, `orginalname`, `encoding`, `mimetype`, `size`, and the `buffer`. 
+When uploading files from an HTML form (see below), API will automatically parse your files into a `req.files` array. Each item in the array will contain the `fieldname`, `orginalname`, `encoding`, `mimetype`, `size`, and the `buffer`.
 
 ```html
 <form action="/upload" method="post" enctype="multipart/form-data">
@@ -148,7 +148,7 @@ Additional form fields will be automatically parsed into an object and available
 ```javascript
 api.upload("/upload", async (req, res) => {
   // access other form fields
-  console.log('someField: ' + req.body.someField);
+  console.log("someField: " + req.body.someField);
   // save the buffer to storage
   await storage.write(res.files[0].originalname, req.files[0].buffer);
   return res.sendStatus(200);
@@ -161,7 +161,7 @@ To send either locally stored files or files stored via Storage, use `res.sendFi
 
 ```javascript
 api.upload("/file", async (req, res) => {
-  await fs.writeFile("localPath", req.file.buffer);
+  await fs.writeFile("localPath", req.files[0].buffer);
   // will reference local file
   return res.sendFile("localPath");
 });
