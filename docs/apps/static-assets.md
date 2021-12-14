@@ -39,12 +39,10 @@ See the [Express documentation on handling errors](https://expressjs.com/en/guid
 
 ## Falling back to index.html for single-page applications (SPAs)
 
-To return your `index.html` page for any missing path, you can add a catch-all handler after your other handlers:
+To return your `index.html` page for any missing path, you can add a 404 handler with the `http` interface:
 
 ```javascript
-api.get("/*", (req, res) => {
-  res.sendFile(`${process.cwd()}/static/index.html`);
-});
+http.on(404, "index.html");
 ```
 
 ## Using React, Vue, and other SPAs
