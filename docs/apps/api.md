@@ -146,7 +146,7 @@ When uploading files from an HTML form (see below), API will automatically parse
 Additional form fields will be automatically parsed into an object and available on `req.body`. The `buffer` can be passed directly to the `storage` interface to save the file. Please note that multiple files can be uploaded and have a total size limit of 6MB.
 
 ```javascript
-api.upload("/upload", async (req, res) => {
+api.put("/upload", async (req, res) => {
   // access other form fields
   console.log("someField: " + req.body.someField);
   // save the buffer to storage
@@ -160,7 +160,7 @@ api.upload("/upload", async (req, res) => {
 To send either locally stored files or files stored via Storage, use `res.sendFile`. `sendFile` will first check the local directory - if the supplied path exists here, the local file will be sent. Otherwise, `sendFile` will redirect to a download url for a given path, if it exists, from Storage.
 
 ```javascript
-api.upload("/file", async (req, res) => {
+api.put("/file", async (req, res) => {
   await fs.writeFile("localPath", req.files[0].buffer);
   // will reference local file
   return res.sendFile("localPath");
