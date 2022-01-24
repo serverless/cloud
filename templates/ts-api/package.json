@@ -11,5 +11,8 @@
   "devDependencies": {
     "@serverless/cloud": "^2.0.0",
     "@types/jest": "^26.0.24"
+  },
+  "serverless": {
+    "app": "ts-api"
   }
 }

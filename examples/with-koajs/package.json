@@ -1,7 +1,7 @@
 {
   "name": "with-koajs",
   "version": "1.0.0",
-  "description": "Serverless Cloud TypeScript API (with koa)",
+  "description": "Serverless Cloud TypeScript API (with koa.js)",
   "main": "index.ts",
   "type": "module",
   "scripts": {

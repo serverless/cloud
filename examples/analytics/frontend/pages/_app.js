@@ -13,7 +13,8 @@ function SafeHydrate({ children }) {
 export default function MyApp({ Component, pageProps }) {
   return (
     <SafeHydrate>
-      <img src={`${NEXT_PUBLIC_API_URL}/pixel.gif`} />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={`${NEXT_PUBLIC_API_URL}/pixel.gif`} alt="analytics pixel" />
       <Component {...pageProps} />
     </SafeHydrate>
   );

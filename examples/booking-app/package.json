@@ -1,11 +1,18 @@
 {
   "name": "booking-app",
   "version": "1.0.0",
-  "description": "A simple booking app",
+  "description": "Serverless Cloud booking app example",
   "main": "index.ts",
   "scripts": {
     "start": "cloud",
     "test": "cloud test"
+  },
+  "serverless": {
+    "app": "booking-app",
+    "org": "serverless",
+    "params": {
+      "TOKEN_SECRET": "Secret for signing authentication tokens. Set to any random string."
+    }
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

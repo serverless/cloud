@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "@serverless/cloud": "^2.0.0"
+  },
+  "serverless": {
+    "app": "js-api"
   }
 }

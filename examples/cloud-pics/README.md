@@ -1,4 +1,36 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<p align="center">
+⚡️
+<br>
+<br>
+<b>cloud.serverless.com</b>
+<br>
+Cloud Pics
+</p>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+**Cloud Pics**
+
+Cloud Pics is an Instagram-inspired photo sharing application built on [Serverless ⚡️ Cloud](https://serverless.com/cloud/).
+
 This example shows how to add a Serverless Cloud API to a Next.js app.
+
+The front-end uses Server-Side Rendering (SSR) and can be deployed to Vercel.
 
 # Prerequisites
 

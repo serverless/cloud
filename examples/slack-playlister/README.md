@@ -1,5 +1,7 @@
 # Serverless Cloud Slack to Spotify Playlister
 
+[![Deploy to Serverless Cloud](https://cloud.serverless.com/deploy.svg)](https://cloud.serverless.com/start/clone?repoUrl=https%3A%2F%2Fgithub.com%2Fserverless%2Fcloud%2Ftree%2Fmain%2Fexamples%2Fslack-playlister)
+
 This is app is meant to be used as an integration with any Slack channel. It listens to Spotify track URL's for any subscribed channel, and adds them into a central playlist.
 
 if forking in Serverless Cloud or cloning from Github, params you will need are:

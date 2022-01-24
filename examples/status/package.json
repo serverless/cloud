@@ -1,16 +1,22 @@
 {
   "name": "status-page",
   "version": "1.0.0",
-  "description": "Serverless Status Page",
+  "description": "Serverless Cloud Status Page example",
   "main": "./backend/api.js",
-  "type": "module",
   "scripts": {
     "start": "cloud",
     "test": "cloud test",
-    "postinstall": "pushd frontend; npm run build; popd"
+    "build:frontend": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "devDependencies": {
     "@jest/globals": "^27.1.0",
     "@serverless/cloud": "^2.0.0"
+  },
+  "serverless": {
+    "app": "status-page",
+    "org": "serverless",
+    "params": {
+      "ADMIN_PASSWORD": "Administrator password"
+    }
   }
 }

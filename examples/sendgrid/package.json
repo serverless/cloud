@@ -1,7 +1,7 @@
 {
   "name": "cloud-sendgrid",
   "version": "1.0.0",
-  "description": "Serverless Cloud JavaScript API template",
+  "description": "Serverless Cloud SendGrid integration example",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -13,7 +13,11 @@
   },
   "serverless": {
     "app": "cloud-sendgrid",
-    "org": "serverless"
+    "org": "serverless",
+    "params": {
+      "SENDGRID_API_KEY": "SendGrid API Key",
+      "SENDGRID_SENDER": "Sender email address"
+    }
   },
   "dependencies": {
     "@sendgrid/mail": "^7.6.1"

@@ -5,6 +5,7 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
+    "build:frontend": "npm install --prefix frontend && npm run build --prefix frontend",
     "start": "cloud"
   },
   "devDependencies": {
@@ -12,6 +13,7 @@
     "@types/jest": "^26.0.24"
   },
   "serverless": {
-    "app": "analytics"
+    "app": "analytics",
+    "org": "serverless"
   }
 }

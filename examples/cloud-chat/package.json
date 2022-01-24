@@ -1,8 +1,10 @@
 {
   "name": "cloud-chat",
+  "description": "Serverless Cloud chat application example",
   "type": "module",
   "main": "index.ts",
   "scripts": {
+    "build:frontend": "npm install --prefix frontend && npm run build --prefix frontend",
     "start": "cloud",
     "deploy": "cloud deploy production",
     "preview:deploy": "cloud deploy ${PREVIEW_INSTANCE_NAME}",
@@ -13,8 +15,8 @@
     "@jest/globals": "^27.2.5",
     "cors": "^2.8.5",
     "jsonwebtoken": "^8.5.1",
-    "ksuid": "^2.0.0",
-    "long": "^4.0.0",
+    "ksuid": "^3.0.0",
+    "long": "^5.2.0",
     "nodes2ts": "^2.0.0",
     "uuid": "^8.3.2"
   },
@@ -24,6 +26,9 @@
   },
   "serverless": {
     "org": "serverless",
-    "app": "chat"
+    "app": "chat",
+    "params": {
+      "TOKEN_SECRET": "Secret for signing authentication tokens. Set to any random string."
+    }
   }
 }

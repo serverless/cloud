@@ -21,10 +21,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: v16
-      - run: npm ci
+      - run: npm install
       - run: npm test
-      - run: npm ci
-        working-directory: examples/cloud-chat/frontend
-      - run: npm run build
-        working-directory: examples/cloud-chat/frontend
+      - run: npm run build:frontend
       - run: npm run deploy

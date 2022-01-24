@@ -1,7 +1,7 @@
 {
-  "name": "js-api",
+  "name": "cloud-auth",
   "version": "1.0.0",
-  "description": "Serverless Cloud JavaScript API template",
+  "description": "Serverless Cloud authentication example",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -13,7 +13,10 @@
   },
   "serverless": {
     "app": "cloud-auth",
-    "org": "eahefnawy"
+    "org": "serverless",
+    "params": {
+      "JWT_SECRET": "Secret used to sign session tokens, use any random string"
+    }
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

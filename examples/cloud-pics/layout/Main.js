@@ -7,8 +7,6 @@ import styles from "@styles/Main.module.css";
 import authState from "@state/auth";
 
 export default function Main({ children }) {
-  const auth = useSnapshot(authState);
-
   return (
     <div className={styles.container}>
       <Head>

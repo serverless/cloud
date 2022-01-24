@@ -19,6 +19,7 @@ export default function TopNavbar() {
     <Navbar className={styles.root}>
       <Container fluid>
         <Nav className="w-100">
+        <Navbar.Brand>CloudPics</Navbar.Brand>
           <Nav.Item className="flex-grow-1">
             {pathname !== "/" && (
               <Link href="/">
@@ -28,7 +29,6 @@ export default function TopNavbar() {
               </Link>
             )}
           </Nav.Item>
-
           {user && pathname !== "/upload" && (
             <Nav.Item>
               <Link href="/upload">

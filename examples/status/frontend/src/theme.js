@@ -1,4 +1,4 @@
-import { extendTheme, withDefaultColorScheme, withDefaultProps } from "@chakra-ui/react"
+import { extendTheme, withDefaultProps } from "@chakra-ui/react"
 // 2. Add your color mode config
 const config = {
   initialColorMode: "dark",
@@ -42,7 +42,7 @@ const theme = extendTheme(
       Button: {
         baseStyle: {
           color: "#fff",
-        
+
         }
       },
       Skeleton: {

@@ -1,7 +1,7 @@
 {
   "name": "todo",
   "version": "1.0.0",
-  "description": "Serverless Cloud todo api",
+  "description": "Serverless Cloud todo api example",
   "main": "index.js",
   "type": "module",
   "scripts": {

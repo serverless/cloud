@@ -1,7 +1,7 @@
 {
   "name": "mongodb",
   "version": "1.0.0",
-  "description": "Serverless Cloud JavaScript API template",
+  "description": "Serverless Cloud MongoDB integration example",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -13,7 +13,10 @@
   },
   "serverless": {
     "app": "mongodb",
-    "org": "serverless"
+    "org": "serverless",
+    "params": {
+      "MONGO_URI": "MongoDB endpoint URI"
+    }
   },
   "dependencies": {
     "mongodb": "^4.3.1"
