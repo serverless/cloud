@@ -79,15 +79,16 @@ The Response object supports the following methods. By convention, the Response 
 
 | Method           | Description                                                                                                                                                                                |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `res.cookie()`   | Sets cookie name to value. See [res.cookie()](http://expressjs.com/en/4x/api.html#res.cookie).                                                                                             |
+| `res.cookie()`   | Sets cookie name to value. See [res.cookie()](https://expressjs.com/en/4x/api.html#res.cookie).                                                                                            |
 | `res.json()`     | Sends a JSON response. This method sends a response (with the correct content-type) that is the parameter converted to a JSON string using `JSON.stringify()`.                             |
 | `res.location()` | Sets the response `Location` HTTP header to the specified path parameter.                                                                                                                  |
 | `res.redirect()` | Redirects to the URL derived from the specified path, with specified status, a positive integer that corresponds to an HTTP status code. If not specified, status defaults to “302 Found”. |
 | `res.send()`     | Sends the HTTP response. The body parameter can be a `Buffer` object, a `String`, an `object`, `Boolean`, or an `Array`.                                                                   |
+| `res.set()`      | Sets the response's HTTP headers. Arguments can be `(field, value)` or a single object containing field/value pairs. See [res.set()](https://expressjs.com/en/4x/api.html#res.set)         |
 
 ## Middleware
 
-Serverless Cloud supports both _Application_ and _Route-level_ middleware. For more information on middleware, please visit the [Express.js docs](http://expressjs.com/en/guide/using-middleware.html).
+Serverless Cloud supports both _Application_ and _Route-level_ middleware. For more information on middleware, please visit the [Express.js docs](https://expressjs.com/en/guide/using-middleware.html).
 
 ## CORS
 
