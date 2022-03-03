@@ -1,0 +1,22 @@
+{
+  "name": "discord-spotify-playlister",
+  "version": "1.0.0",
+  "description": "Discord Spotify Playlist Manager built with Serverless Cloud",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "cloud",
+    "test": "cloud test"
+  },
+  "devDependencies": {
+    "@serverless/cloud": "^2.0.0",
+    "@types/jest": "^26.0.24"
+  },
+  "dependencies": {
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.27.2",
+    "discord-interactions": "^2.4.1",
+    "discord.js": "^13.6.0",
+    "spotify-web-api-node": "^5.0.2"
+  }
+}
