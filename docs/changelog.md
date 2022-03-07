@@ -9,6 +9,11 @@ menuOrder: 9
 
 See what's new in Serverless Cloud as we build the most developer-friendly serverless app platform ever! 🚀
 
+## March 2022
+
+### Atomic Counters and Batch Sets
+Serverless Data now supports atomic counters using the `data.add()` method or the `{ $add: [value] } ` syntax for `set` operations. Atomic updates ensure that addition and subtraction operations are processed in order, giving users the ability to maintain the integrity of counters even if there are multiple simultaneous requests. We've also released support for batch `set` operations, allowing users to set up to 25 items at once. For more informaiton, visit our [documentation](https://www.serverless.com/cloud/docs/apps/data).
+
 ## February 2022
 
 ### Serverless Cloud Events
