@@ -250,6 +250,22 @@ If you'd like to retrieve multiple items that aren't part of the same collection
 let results = await data.get(["key1", "someOtherKey", "namespacedKey:keyX"]);
 ```
 
+## Setting multiple items
+
+To set multiple items at the same time, you can specify an `array` of objects that each contain a `key` and `value` as well as any additional meta data (e.g. labels and a `ttl` value) as the first argument of the `set` method. You can specify up to 25 items in each request. An optional second parameter supports either a boolean of `true` to enable metadata in the response, or an options object like `{ meta: true }`.
+
+```javascript
+let results = await data.set(
+  [
+    { key: "key1", value: "string value" },
+    { key: "someOtherKey", value: 123, ttl: 1000 },
+    { key: "namespacedKey:keyX", value: { foo: "bar" }, label1: "foo:baz }
+  ]
+);
+```
+
+**IMPORTANT NOTE:** Batch set operations are destructive and will completely overwrite existing items. They do not support PARTIAL updates like a single item `set` does.
+
 ## Removing items
 
 You can remove items from Serverless Data by providing and item's key or an `array` of keys to the `remove()` method. Keys must be the complete `key` as wildcards and other conditionals are not supported in the `remove` operation. You can specify up to 25 keys in each request.
@@ -259,6 +275,43 @@ let results = await data.remove("foo");
 let results = await data.remove("foo:bar");
 let results = await data.remove(["key1", "someOtherKey", "namespacedKey:keyX"]);
 ```
+
+## Atomic counters
+
+Atomic counters allow numeric items or numeric item object values to be atomically updated. Atomic updates ensure that addition and subtraction operations are processed in order, giving users the ability to maintain the integrity of counters even if there are multiple simultaneous requests.
+
+### Updating a single value atomically
+
+If you only need to update a single value, Serverless Data provides the `add` method to help you do that. If the item is a simple numeric value (e.g. `{ key: "myCounter", value: 10 }`, you provide the full key name (including collection namespace) as the first parameter and the numeric value you want to "add" to the existing value as the second parameter. Numbers can be positive or negative, and atomic counters support both integers and float values.
+
+```javascript
+let results = await data.add("myCounter", 1);
+let results = await data.add("myNegativeCounter", -1);
+```
+
+The `add` method will return the updated value by default. You can specify an optional third parameter of `true` to return the item's metadata, or pass in an options object like `{ meta: true }`.
+
+If the value you want to atomically update is nested within an object, you specify the full key name as the first parameter, the name of the nested object key you want to update as the second parameter, and a numeric value as the third parameter.
+
+```javascript
+let results = await data.add("myObject", "nestedCounter", 5);
+```
+
+The `add` method will return the updated object by default. You can specify an optional fourth parameter of `true` to return the item's metadata, or pass in an options object like `{ meta: true }`.
+
+### Updating multiple values atomically
+
+You may want to atomically update several fields with a single item and potentially update other values as well. You can achieve this using the standard `set` method along with a special `$add` keyword. You `set` an item like you normally would, but for any numeric value that you'd like to atomically update, you specify a value of `{ $add: 1 }`, where `1` is whatever value you wish to add. For example:
+
+```javascript
+let results = await data.set("myObject", {
+  nestedCounter: { $add: 1 },
+  anotherCounter: { $add: 5 },
+  someOtherValue: "foo"
+});
+```
+
+In the example above, `nestedCounter` will be atomically updated by `1` on every call and `anotherCounter` will be atomically updated by `5`. Please note that regular values like `someOtherValue` above **will not** be updated atomically and the last write wins.
 
 ## Reacting to changes
 
