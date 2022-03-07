@@ -252,7 +252,7 @@ let results = await data.get(["key1", "someOtherKey", "namespacedKey:keyX"]);
 
 ## Setting multiple items
 
-To set multiple items at the same time, you can specify an `array` of objects that each contain a `key` and `value` as well as any additional meta data (e.g. labels and a `ttl` value) as the first argument of the `set` method. You can specify up to 25 items in each request. An optional second parameter supports either a boolean of `true` to enable metadata in the response, or an options object like `{ meta: true }`.
+To set multiple items at the same time, you can specify an `array` of objects that each contain a `key` and `value` as well as any additional meta data (e.g. labels and a `ttl` value) as the first argument of the `set` method. You can specify up to 25 items in each request. The second parameter must be an options object with the `overwrite` flag set to `true`. This is for future compatibility to support batch updates. You can also add a `meta: true` flag to return the metadata of your items.
 
 ```javascript
 let results = await data.set(
@@ -260,11 +260,12 @@ let results = await data.set(
     { key: "key1", value: "string value" },
     { key: "someOtherKey", value: 123, ttl: 1000 },
     { key: "namespacedKey:keyX", value: { foo: "bar" }, label1: "foo:baz }
-  ]
+  ],
+  { overwrite: true }
 );
 ```
 
-**IMPORTANT NOTE:** Batch set operations are destructive and will completely overwrite existing items. They do not support PARTIAL updates like a single item `set` does.
+**IMPORTANT NOTE:** Batch set operations are destructive and will completely overwrite existing items. They do not support PARTIAL updates at this time like a single item `set` does. We are working to add support for this in a future release.
 
 ## Removing items
 
