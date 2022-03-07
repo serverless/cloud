@@ -265,7 +265,7 @@ let results = await data.set(
 );
 ```
 
-**IMPORTANT NOTE:** Batch set operations are destructive and will completely overwrite existing items. They do not support PARTIAL updates at this time like a single item `set` does. We are working to add support for this in a future release.
+**IMPORTANT NOTE:** At this time, batch set operations must have the `{ overwrite: true }` flag set. We are working to add support for batch updates in a future release.
 
 ## Removing items
 
