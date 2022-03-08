@@ -1,0 +1,44 @@
+[
+  {
+    "key": "todo:1",
+    "value": {
+      "id": "1",
+      "name": "Deploy an amazing Serverless Cloud app",
+      "status": "complete",
+      "completed": "2021-07-01T12:00:00.000Z",
+      "createdAt": 1627316142196
+    },
+    "label1": "complete:2022-01-26T012:00:00.000Z"
+  },
+  {
+    "key": "todo:2",
+    "value": {
+      "id": "2",
+      "name": "Read the Serverless Cloud docs",
+      "status": "incomplete",
+      "createdAt": 1627316142196
+    },
+    "label1": "incomplete:9999"
+  },
+  {
+    "key": "todo:3",
+    "value": {
+      "id": "3",
+      "name": "Share a preview of my app by running `cloud share`",
+      "status": "incomplete",
+      "createdAt": 1627316142196
+    },
+    "label1": "incomplete:9999"
+  },
+  {
+    "key": "todo:4",
+    "value": {
+      "id": "4",
+      "name": "Tell all my friends how awesome Serverless Cloud is!",
+      "duedate": "2022-01-25T00:00:00.000Z",
+      "status": "incomplete",
+      "createdAt": 1627316142196
+    },
+    "label1": "incomplete:2022-01-25T00:00:00.000Z"
+  }
+]

@@ -23,5 +23,15 @@
     "name": "react-js",
     "title": "React with API",
     "description": "Simple React starter service"
+  },
+  {
+    "name": "nextjs",
+    "title": "Next.js with API",
+    "description": "Simple Next.js starter"
+  },
+  {
+    "name": "nextjs-ts",
+    "title": "Next.js with API in TS",
+    "description": "Simple Next.js starter in TS"
   }
 ]
