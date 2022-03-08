@@ -16,7 +16,10 @@
   },
   "serverless": {
     "app": "cloud-pics-api",
-    "org": "rschick"
+    "org": "serverless",
+    "params": {
+      "TOKEN_SECRET": "Secret for signing authentication tokens. Set to any random string."
+    }
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",

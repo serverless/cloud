@@ -10,6 +10,13 @@
 import { api, data, schedule, params } from "@serverless/cloud";
 
 /*
+ * Simple health check
+ */
+api.get("/health", async (req, res) => {
+  res.send({ status: "ok" });
+});
+
+/*
  * Create a route to GET our TODO items
  */
 api.get("/todos", async (req, res) => {

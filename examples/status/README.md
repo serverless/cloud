@@ -26,6 +26,8 @@ The Serverless Status Page
 
 **Serverless Status** ⎯⎯⎯ The Serverless Status Page, powered by [Serverless Cloud](https://serverless.com/cloud). You can see a live demo [at this link](https://magical-package-m2777.cloud.serverless.com/).
 
+[![Deploy to Serverless Cloud](https://cloud.serverless.com/deploy.svg)](https://cloud.serverless.com/start/clone?repoUrl=https%3A%2F%2Fgithub.com%2Fserverless%2Fcloud%2Ftree%2Fmain%2Fexamples%2Fstatus)
+
 To get started, clone this repo, and navigate into the `src` directory...
 
 ```

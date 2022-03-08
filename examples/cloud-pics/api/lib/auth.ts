@@ -85,6 +85,8 @@ export function register() {
       req.token = await createUserToken(req.user);
       req.systemWarning = systemWarning;
 
+      res.cookie("sid", req.token);
+
       return next();
     } catch (error) {
       console.log(error);

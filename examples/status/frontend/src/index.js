@@ -9,8 +9,6 @@ import {
   Box,
   Container,
   HStack,
-
-  Heading,
 } from "@chakra-ui/react";
 import ServerlessCloudLogo from './assets/serverless-cloud-text.svg'
 

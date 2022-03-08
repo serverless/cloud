@@ -26,6 +26,9 @@ The Serverless URL Shortner
 
 **Go Serverless** ⎯⎯⎯ The Serverless URL Shortner, powered by [Serverless Cloud](https://serverless.com/cloud). It supports both random and named short urls with your own custom `go.acme.com` domain.
 
+[![Deploy to Serverless Cloud](https://cloud.serverless.com/deploy.svg)](https://cloud.serverless.com/start/clone?repoUrl=https%3A%2F%2Fgithub.com%2Fserverless%2Fcloud%2Ftree%2Fmain%2Fexamples%2Furl-shortener)
+
+
 To get started, make sure the Serverless Cloud CLI is installed...
 
 ```

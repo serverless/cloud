@@ -1,14 +1,18 @@
 {
-  "name": "test-vue",
+  "name": "vue-js",
   "version": "1.0.0",
-  "description": "Serverless Cloud JavaScript API template",
+  "description": "Serverless Cloud Vue.js template",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "cloud",
-    "test": "cloud test"
+    "test": "cloud test",
+    "build:frontend": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "devDependencies": {
     "@serverless/cloud": "^2.0.0"
+  },
+  "serverless": {
+    "app": "vue-js"
   }
 }

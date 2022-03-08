@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.js": "/static/js/main.da06e4b5.chunk.js",
-    "main.js.map": "/static/js/main.da06e4b5.chunk.js.map",
+    "main.js": "/static/js/main.b162395e.chunk.js",
+    "main.js.map": "/static/js/main.b162395e.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.838aaa14.js",
     "runtime-main.js.map": "/static/js/runtime-main.838aaa14.js.map",
-    "static/js/2.347365cf.chunk.js": "/static/js/2.347365cf.chunk.js",
-    "static/js/2.347365cf.chunk.js.map": "/static/js/2.347365cf.chunk.js.map",
+    "static/js/2.403c7cfc.chunk.js": "/static/js/2.403c7cfc.chunk.js",
+    "static/js/2.403c7cfc.chunk.js.map": "/static/js/2.403c7cfc.chunk.js.map",
     "index.html": "/index.html",
-    "static/js/2.347365cf.chunk.js.LICENSE.txt": "/static/js/2.347365cf.chunk.js.LICENSE.txt",
+    "static/js/2.403c7cfc.chunk.js.LICENSE.txt": "/static/js/2.403c7cfc.chunk.js.LICENSE.txt",
     "static/media/serverless-cloud-text.70f41d4b.svg": "/static/media/serverless-cloud-text.70f41d4b.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.838aaa14.js",
-    "static/js/2.347365cf.chunk.js",
-    "static/js/main.da06e4b5.chunk.js"
+    "static/js/2.403c7cfc.chunk.js",
+    "static/js/main.b162395e.chunk.js"
   ]
 }

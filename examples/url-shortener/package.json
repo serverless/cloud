@@ -9,6 +9,9 @@
   },
   "serverless": {
     "org": "serverless",
-    "app": "url-shortener"
+    "app": "url-shortener",
+    "params": {
+      "ADMIN_PASSWORD": "Administrator password"
+    }
   }
 }

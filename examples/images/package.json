@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "cloud",
-    "test": "cloud test"
+    "test": "cloud test",
+    "build:frontend": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "devDependencies": {
     "@serverless/cloud": "^2.6.3"

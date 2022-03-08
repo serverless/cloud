@@ -3,6 +3,8 @@
 This application is a sample to-do app build powered by React, and yes Serverless Cloud!
 You now own a personal development instance on Serverless Cloud. Just play with the code and watch changes synced in seconds.
 
+[![Deploy to Serverless Cloud](https://cloud.serverless.com/deploy.svg)](https://cloud.serverless.com/start/clone?repoUrl=https%3A%2F%2Fgithub.com%2Fserverless%2Fcloud%2Ftree%2Fmain%2Fexamples%2Fdefault)
+
 ## APIs
 
 Note that several endpoints are already defined by using the `api` object in `index.js`. You can create new API routes or update the existing ones to see the effect.

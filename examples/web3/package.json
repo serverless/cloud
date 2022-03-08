@@ -1,5 +1,6 @@
 {
   "name": "web3",
+  "description": "Serverless Cloud web3 example",
   "type": "module",
   "main": "index.mjs",
   "scripts": {

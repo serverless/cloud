@@ -11,5 +11,8 @@
   "devDependencies": {
     "@jest/globals": "^27.1.0",
     "@serverless/cloud": "^2.0.0"
+  },
+  "serverless": {
+    "app": "todo"
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "todo",
   "version": "1.0.0",
-  "description": "Serverless Cloud todo api",
+  "description": "Serverless Cloud todo app example",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -11,5 +11,9 @@
   "devDependencies": {
     "@jest/globals": "^27.1.0",
     "@serverless/cloud": "^2.0.0"
+  },
+  "serverless": {
+    "app": "todo-app",
+    "org": "serverless"
   }
 }

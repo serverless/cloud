@@ -1,7 +1,7 @@
 {
-  "name": "ts-api",
+  "name": "slack-playlister",
   "version": "1.0.0",
-  "description": "Serverless Cloud TypeScript API template",
+  "description": "Serverless Cloud Slack playlister example",
   "main": "index.ts",
   "type": "module",
   "scripts": {
@@ -14,5 +14,14 @@
   "dependencies": {
     "axios": "^0.25.0",
     "spotify-web-api-node": "^5.0.2"
+  },
+  "serverless": {
+    "app": "slack-playlister",
+    "org": "serverless",
+    "params": {
+      "SPOTIFY_CLIENT_ID": "Client ID for authentication with the Spotify API",
+      "SPOTIFY_SECRET": "Secret for authenticating with the Spotify API",
+      "PLAYLIST_ID": "Spotify Playlist ID to add tracks to"
+    }
   }
 }
