@@ -1,0 +1,19 @@
+{
+  "name": "angular",
+  "version": "1.0.0",
+  "description": "Serverless Cloud Angular template",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "cloud",
+    "test": "cloud test",
+    "build:frontend": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "devDependencies": {
+    "@serverless/cloud": "^2.0.0"
+  },
+  "serverless": {
+    "app": "zs-rbac-ui",
+    "org": "hypredge"
+  }
+}

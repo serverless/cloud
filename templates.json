@@ -23,5 +23,10 @@
     "name": "react-js",
     "title": "React with API",
     "description": "Simple React starter service"
+  },
+  {
+    "name": "angular",
+    "title": "Angular js with API",
+    "description": "Simple angular starter"
   }
 ]
