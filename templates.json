@@ -58,5 +58,11 @@
     "title": "SvelteKit (TypeScript)",
     "description": "Simple SvelteKit app using TS",
     "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/svelte-ts.svg"
+  },
+  {
+    "name": "angular-ts",
+    "title": "Angular (TypeScript)",
+    "description": "Angular starter app using TS",
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/angular.svg"
   }
 ]
