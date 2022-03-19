@@ -4,7 +4,7 @@ This is a scaffolding project for building a Vue.js project with an API on Serve
 
 Type `cloud` to enter the cloud shell and connect to your personal development instance. Just play with the code and watch changes sync and deploy in less than a second.
 
-To make changes to Vue, open a separate terminal, run `cd frontend` and then run `npm 1`. Once the dependencies are installed, run `npm run serve`. You can then make changes and view them locally. If you want to connect to your personal developer instance from your local Vue project, update the `axios.defaults.baseURL` in `src/main.js` to your URL. When you are ready to deploy your Vue changes to your developer sandbox, run `npm run build`.
+To make changes to Vue, open a separate terminal and run `npm i`. Once the dependencies are installed, run `cloud dev`. You can then make changes and view them locally. A local proxy is running that allows you to access your live developer sandbox using `/api` from your local Vue.js dev server. When you are ready to deploy your Vue changes to your developer sandbox, type `build` in the cloud shell, or `cloud build` in a terminal window.
 
 ## APIs
 

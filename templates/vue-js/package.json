@@ -4,14 +4,52 @@
   "description": "Serverless Cloud Vue.js template",
   "main": "index.js",
   "type": "module",
+  "private": true,
   "scripts": {
     "start": "cloud",
-    "test": "cloud test",
-    "build:frontend": "npm install --prefix frontend && npm run build --prefix frontend"
+    "build": "cloud build",
+    "lint": "vue-cli-service lint",
+    "cloud:dev": "vue-cli-service serve",
+    "cloud:build": "vue-cli-service build",
+    "cloud:lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "core-js": "^3.8.3",
+    "vue": "^3.2.13"
   },
   "devDependencies": {
-    "@serverless/cloud": "^2.0.0"
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@jest/globals": "^27.5.1",
+    "@serverless/cloud": "^2.7.4",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3"
   },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "@babel/eslint-parser"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
   "serverless": {
     "app": "vue-js"
   }

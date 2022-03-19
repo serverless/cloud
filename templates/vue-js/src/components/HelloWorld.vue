@@ -20,20 +20,19 @@
       </div>
     </div>
 
-    <h3>Edit this Vue.js app locally:</h3>
+    <h3>Edit this Vue.js app:</h3>
     <p>
-      Open a separate terminal, run <code>cd frontend</code> and then
-      <code>npm i</code> to install the Vue.js dependencies. Run
-      <code>npm run serve</code> to launch a local version enabling you to make
-      changes and view them locally. If you want to connect to your personal
-      developer instance from your local Vue project, update the
-      <code>axios.defaults.baseURL</code> in
-      <code>/frontend/src/main.js</code> to your URL.
+      Open your terminal to the project directory and run <code>npm i</code> to
+      install the Vue.js dependencies. Then run <code>cloud dev</code> to launch
+      the local Vue.js dev server. You can access the API on your personal
+      developer sandbox by appending <code>/api</code> to the local dev server's
+      localhost address.
     </p>
   </div>
 </template>
 
 <script>
+import { ref } from "vue";
 import axios from "axios";
 
 export default {
@@ -41,10 +40,13 @@ export default {
   props: {
     msg: String,
   },
-  data() {
+  setup() {
+    const loading = ref(true);
+    const users = ref([]);
+
     return {
-      users: [],
-      loading: true,
+      loading,
+      users,
     };
   },
   created() {
