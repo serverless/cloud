@@ -2,13 +2,10 @@ import useSWR from "swr";
 
 import { Dropdown } from "react-bootstrap";
 
-import { NEXT_PUBLIC_API_URL } from "@state/config";
-
 const fetcher = (key) => fetch(key).then((res) => res.json());
 
 export default function HostSelector({ value, onChange }) {
-  const { data } = useSWR(`${NEXT_PUBLIC_API_URL}/api/hosts`, fetcher);
-
+  const { data } = useSWR("/api/hosts", fetcher);
   return (
     <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">

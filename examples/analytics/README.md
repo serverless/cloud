@@ -62,9 +62,7 @@ The CLI will print your developer sandbox URL. Open this url in the browser to s
 To add visit tracking to a site, add the analytics pixel to your site by adding the following html on pages you want to track:
 
 ```html
-<img src="<CLOUD_URL>/pixel.gif" alt="analytics pixel" />
+<img src="<CLOUD_URL>/tracking/pixel.gif" alt="analytics pixel" />
 ```
 
 Replace `<CLOUD_URL>` with the URL of your instance.
-
-
