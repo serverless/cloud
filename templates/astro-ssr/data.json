@@ -1,0 +1,43 @@
+[
+  {
+    "key": "products:1",
+    "value": {
+      "image": "/images/products/cereal.jpg",
+      "id": 1,
+      "price": 3.99,
+      "name": "Cereal"
+    },
+    "created": "2022-04-07T18:50:05.000Z",
+    "modified": "2022-04-07T18:51:53.000Z"
+  }, {
+    "key": "products:2",
+    "value": {
+      "id": 2,
+      "name": "Yogurt",
+      "price": 3.97,
+      "image": "/images/products/yogurt.jpg"
+    },
+    "created": "2022-04-07T18:50:05.000Z",
+    "modified": "2022-04-07T18:51:53.000Z"
+  }, {
+    "key": "products:3",
+    "value": {
+      "id": 3,
+      "name": "Rolled Oats",
+      "price": 2.89,
+      "image": "/images/products/oats.jpg"
+    },
+    "created": "2022-04-07T18:50:05.000Z",
+    "modified": "2022-04-07T18:51:53.000Z"
+  },  {
+    "key": "products:4",
+    "value": {
+      "id": 4,
+      "name": "Muffins",
+      "price": 4.39,
+      "image": "/images/products/muffins.jpg"
+    },
+    "created": "2022-04-07T18:50:05.000Z",
+    "modified": "2022-04-07T18:51:53.000Z"
+  }
+]
