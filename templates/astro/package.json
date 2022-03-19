@@ -1,0 +1,16 @@
+{
+  "name": "@example/starter",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "cloud:dev": "astro dev",
+    "cloud:build": "astro build"
+  },
+  "devDependencies": {
+    "@serverless/cloud": "^2.7.6",
+    "astro": "^0.23.7"
+  },
+  "serverless": {
+    "app": "astro-starter"
+  }
+}
