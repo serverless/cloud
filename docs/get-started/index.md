@@ -16,7 +16,7 @@ There are two different ways of getting started with Serverless Cloud and both e
 
 Here are the ways to get started with Serverless Cloud. These are: 
 
-- [Start from CLI] (#start-from-cli)
+- [Start from CLI](#start-from-cli)
 - [Start from Dashboard](#start-from-dashboard) 
 
 
