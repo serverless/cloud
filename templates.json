@@ -1,52 +1,62 @@
 [
   {
     "name": "js-api",
-    "title": "JavaScript API",
-    "description": "API starter template in JS"
+    "title": "JavaScript app",
+    "description": "Starter template using JavaScript.",
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/javascript.svg"
   },
   {
     "name": "ts-api",
-    "title": "TypeScript API",
-    "description": "API starter template in TS"
+    "title": "TypeScript app",
+    "description": "Starter template using TypeScript.",
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/typescript-icon.svg"
   },
   {
     "name": "vue-js",
-    "title": "Vue.js with API",
-    "description": "Simple Vue.js starter service"
+    "title": "Vue.js",
+    "description": "Vue.js starter app.",
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/vue.svg"
   },
   {
     "name": "react-js",
-    "title": "React with API",
-    "description": "Simple React starter service"
+    "title": "React",
+    "description": "React starter app.",
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/react.svg"
   },
   {
     "name": "eleventy",
     "title": "Eleventy",
-    "description": "Simple 11ty.dev starter site"
+    "description": "Eleventy starter site.",
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/11ty.svg"
   },
   {
     "name": "astro",
     "title": "Astro",
-    "description": "Simple Astro.build starter site"
+    "description": "Astro.build starter site.",
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/astro.svg"
   },
   {
     "name": "nextjs",
-    "title": "Next.js with API",
-    "description": "Simple Next.js starter"
+    "title": "Next.js",
+    "description": "Next.js starter app",
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/nextjs.svg"
   },
   {
     "name": "nextjs-ts",
-    "title": "Next.js with API in TS",
-    "description": "Simple Next.js starter in TS"
+    "title": "Next.js (TypeScript)",
+    "description": "Next.js starter app using TS",
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/nextjs-ts.svg"
   },
   {
     "name": "sveltekit",
-    "title": "SvelteKit (JS)",
-    "description": "Simple SvelteKit starter"
+    "title": "SvelteKit",
+    "description": "SvelteKit starter app",
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/svelte.svg"
   },
   {
     "name": "sveltekit-ts",
-    "title": "SvelteKit (TS)",
-    "description": "Simple SvelteKit starter in TS"
+    "title": "SvelteKit starter project (TypeScript)",
+    "description": "Simple SvelteKit app using TS",
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/svelte-ts.svg"
   }
 ]
