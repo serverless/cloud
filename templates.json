@@ -2,37 +2,37 @@
   {
     "name": "js-api",
     "title": "JavaScript app",
-    "description": "Starter template using JavaScript.",
+    "description": "Starter template using JavaScript",
     "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/javascript.svg"
   },
   {
     "name": "ts-api",
     "title": "TypeScript app",
-    "description": "Starter template using TypeScript.",
+    "description": "Starter template using TypeScript",
     "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/typescript-icon.svg"
   },
   {
     "name": "vue-js",
     "title": "Vue.js",
-    "description": "Vue.js starter app.",
+    "description": "Vue.js starter app",
     "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/vue.svg"
   },
   {
     "name": "react-js",
     "title": "React",
-    "description": "React starter app.",
+    "description": "React starter app",
     "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/react.svg"
   },
   {
     "name": "eleventy",
     "title": "Eleventy",
-    "description": "Eleventy starter site.",
+    "description": "Eleventy starter site",
     "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/11ty.svg"
   },
   {
     "name": "astro",
     "title": "Astro",
-    "description": "Astro.build starter site.",
+    "description": "Astro.build starter site",
     "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/astro.svg"
   },
   {
@@ -55,7 +55,7 @@
   },
   {
     "name": "sveltekit-ts",
-    "title": "SvelteKit starter project (TypeScript)",
+    "title": "SvelteKit (TypeScript)",
     "description": "Simple SvelteKit app using TS",
     "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/svelte-ts.svg"
   }
