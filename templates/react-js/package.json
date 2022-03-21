@@ -1,18 +1,46 @@
 {
   "name": "react-js",
-  "version": "1.0.0",
-  "description": "Serverless Cloud React.js template",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "start": "cloud",
-    "test": "cloud test",
-    "build:frontend": "npm install --prefix frontend && npm run build --prefix frontend"
-  },
+  "version": "0.1.0",
+  "private": true,
   "devDependencies": {
-    "@serverless/cloud": "^2.0.0"
+    "@serverless/cloud": "^2.0.0",
+    "http-proxy-middleware": "^2.0.4",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.23.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "web-vitals": "^1.0.1"
   },
   "serverless": {
-    "app": "react-js"
+    "app": "react-test"
+  },
+  "scripts": {
+    "start": "cloud",
+    "build": "cloud build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "cloud:dev": "react-scripts start",
+    "cloud:build": "BUILD_PATH='./static' react-scripts build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
