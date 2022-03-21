@@ -1,0 +1,28 @@
+{
+  "name": "sveltekit-ts",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "cloud:dev": "svelte-kit dev",
+    "cloud:build": "svelte-kit build"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@sveltejs/kit": "next",
+    "svelte": "^3.46.0",
+    "svelte-preprocess": "^4.10.4",
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "@fontsource/fira-mono": "^4.5.0",
+    "@lukeed/uuid": "^2.0.0",
+    "@serverless/cloud": "^2.7.5",
+    "cookie": "^0.4.1"
+  },
+  "serverless": {
+    "app": "sveltekit-ts"
+  }
+}

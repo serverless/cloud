@@ -7,17 +7,16 @@
     "cloud:build": "svelte-kit build"
   },
   "devDependencies": {
-    "@serverless/cloud": "^2.6.13",
     "@sveltejs/kit": "next",
     "svelte": "^3.46.0"
   },
   "dependencies": {
     "@fontsource/fira-mono": "^4.5.0",
     "@lukeed/uuid": "^2.0.0",
+    "@serverless/cloud": "^2.6.13",
     "cookie": "^0.4.1"
   },
   "serverless": {
-    "app": "svelte-kit-sample",
-    "org": "serverless"
+    "app": "svelte-kit-sample"
   }
 }
