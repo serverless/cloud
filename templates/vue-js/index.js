@@ -1,4 +1,5 @@
-import { api, data, schedule, params } from "@serverless/cloud";
+import { api, data, http } from "@serverless/cloud";
+http.on(404, "index.html");
 
 // Create GET route and return users
 api.get("/api/users", async (req, res) => {
@@ -14,10 +15,4 @@ api.get("/api/users", async (req, res) => {
 api.get("/api/*", (req, res) => {
   console.log(`404 - api`);
   res.status(404).send({ error: "not found" });
-});
-
-// Catch all for Vue SPA routes
-api.get("/*", (req, res) => {
-  console.log(`404 - loading index.html`);
-  res.sendFile(`${process.cwd()}/static/index.html`);
 });
