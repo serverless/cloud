@@ -1,10 +1,5 @@
 [
   {
-    "name": "todo",
-    "title": "Sample App",
-    "description": "A sample TODO app"
-  },
-  {
     "name": "js-api",
     "title": "JavaScript API",
     "description": "API starter template in JS"
@@ -25,6 +20,16 @@
     "description": "Simple React starter service"
   },
   {
+    "name": "eleventy",
+    "title": "Eleventy",
+    "description": "Simple 11ty.dev starter site"
+  },
+  {
+    "name": "astro",
+    "title": "Astro",
+    "description": "Simple Astro.build starter site"
+  },
+  {
     "name": "nextjs",
     "title": "Next.js with API",
     "description": "Simple Next.js starter"
@@ -33,5 +38,15 @@
     "name": "nextjs-ts",
     "title": "Next.js with API in TS",
     "description": "Simple Next.js starter in TS"
+  },
+  {
+    "name": "sveltekit",
+    "title": "SvelteKit (JS)",
+    "description": "Simple SvelteKit starter"
+  },
+  {
+    "name": "sveltekit-ts",
+    "title": "SvelteKit (TS)",
+    "description": "Simple SvelteKit starter in TS"
   }
 ]
