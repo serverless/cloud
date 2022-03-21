@@ -10,7 +10,12 @@ export default function HomePage({ items }) {
         <Link key={id} href={`/images/${id}`}>
           <a className={styles.card}>
             <p>{username}</p>
-            <Image src={url} width={width} height={height}></Image>
+            <Image
+              alt={`Image uploaded by ${username}`}
+              src={url}
+              width={width}
+              height={height}
+            ></Image>
           </a>
         </Link>
       ))}
