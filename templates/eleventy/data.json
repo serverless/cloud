@@ -1,0 +1,14 @@
+[
+  {
+    "key": "user:1",
+    "value": { "name": "User #1", "email": "user1@acmecorp.com" }
+  },
+  {
+    "key": "user:2",
+    "value": { "name": "User #2", "email": "user2@gmail.com" }
+  },
+  {
+    "key": "user:3",
+    "value": { "name": "User #3", "email": "user3@hotmail.com" }
+  }
+]
