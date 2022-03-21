@@ -70,6 +70,7 @@ Serverless Cloud poses some limits to protect our system and provide great exper
 - The total code size of the application can't exceed 500MB in developer sandbox. This limit is 128MB for permanent stages. 
 - All your tests can run no longer than 5 minutes in test stages. 
 - The total size of all parameters on every instance can't exceed 3KBs. 
+- Development session for Serverless Cloud can take at most an hour. After an hour, you'll need to quit and restart the Cloud Shell by typing `cloud`. 
 
 ### Serverless API Limits
 
