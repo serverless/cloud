@@ -45,7 +45,7 @@
     "name": "nextjs-ts",
     "title": "Next.js (TypeScript)",
     "description": "Next.js starter app using TS",
-    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/nextjs.svg"
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/nextjs-ts.svg"
   },
   {
     "name": "sveltekit",
@@ -57,6 +57,6 @@
     "name": "sveltekit-ts",
     "title": "SvelteKit (TypeScript)",
     "description": "Simple SvelteKit app using TS",
-    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/svelte.svg"
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/svelte-ts.svg"
   }
 ]
