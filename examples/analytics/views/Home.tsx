@@ -1,8 +1,6 @@
 import { useState } from "react";
 import useSWR from "swr";
 
-import { NEXT_PUBLIC_API_URL } from "@state/config";
-
 import VisitsChart from "@components/VisitsChart";
 import HostSelector from "@components/HostSelector";
 import PeriodSelector from "@components/PeriodSelector";
@@ -16,7 +14,7 @@ export default function Home() {
   const [host, setHost] = useState({ key: "" });
 
   const { data } = useSWR(
-    `${NEXT_PUBLIC_API_URL}/api/data?period=${period}&host=${host.key}`,
+    `/api/data?period=${period}&host=${host.key}`,
     fetcher
   );
 
