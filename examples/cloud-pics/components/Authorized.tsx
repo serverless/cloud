@@ -12,7 +12,7 @@ export default function Authorized({ children }) {
     if (!user) {
       router.push("/");
     }
-  }, [user]);
+  }, [user, router]);
 
   return <>{children}</>;
 }

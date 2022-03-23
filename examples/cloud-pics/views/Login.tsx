@@ -6,8 +6,8 @@ import Button from "@components/Button";
 import authState from "@state/auth";
 
 export default function Login() {
-  const nameInputRef = useRef();
-  const usernameInputRef = useRef();
+  const nameInputRef = useRef(null);
+  const usernameInputRef = useRef(null);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -19,9 +19,9 @@ export default function Login() {
 
   useEffect(() => {
     if (register) {
-      nameInputRef.current.focus();
+      nameInputRef.current?.focus();
     } else {
-      usernameInputRef.current.focus();
+      usernameInputRef.current?.focus();
     }
   }, [register]);
 
@@ -85,7 +85,6 @@ export default function Login() {
               tabIndex={2}
               className="form-control"
               id="exampleInputPassword1"
-              type="password"
               name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
