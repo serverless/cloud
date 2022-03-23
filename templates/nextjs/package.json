@@ -2,7 +2,6 @@
   "name": "nextjs",
   "version": "0.1.0",
   "description": "Serverless Cloud Next.js template",
-  "type": "module",
   "scripts": {
     "cloud:start": "next dev",
     "cloud:build": "next build",

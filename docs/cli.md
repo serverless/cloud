@@ -9,15 +9,15 @@ menuOrder: 7
 
 The Serverless Cloud CLI is an auto-updating command-line interface (CLI) that provides a simple, unified interface to Serverless Cloud. The CLI has multiple modes to optimize the experience for different contexts:
 
-- **Cloud Shell**: The interactive Cloud Shell allows developers to connect to their developer sandbox from their local IDE, auto sync code changes, stream logs, and run common commands to manager their development workflow.
+- **Cloud Shell**: The interactive Cloud Shell allows developers to connect to their developer sandbox from their local IDE, auto sync code changes, stream logs, and run common commands and pre-defined scripts to manage their full-stack development workflow.
 - **Standard Mode**: Standard mode allows developers to run commands from your terminal without having to open an interactive session. Login is still required.
 - **Headless Mode**: Headless mode allows developers to run commands from [CI/CD](/cloud/docs/workflows/cicd) systems using an Access Token.
 
 The CLI automatically updates to the latest version to ensure that users have access to the latest features and fixes. This includes auto-updates of the package locally installed in a project.
 
-**Current CLI Version:** `v2.3.7`
+**Current CLI Version:** ![Serverless Cloud Latest Version](https://img.shields.io/npm/v/@serverless/cloud.svg)
 
-**PLEASE NOTE:** The CLI requires Node.js v14 or higher. You can check your current Node.js version by running `node -v`.
+**PLEASE NOTE:** The CLI requires Node.js v16 or higher. You can check your current Node.js version by running `node -v`.
 
 ## Cloud Shell
 
@@ -31,7 +31,7 @@ Additional flags can be passed to the `cloud` command to configure the behavior 
 - `--reseed`: Enable automatic data reseeding when the `data.json` file is updated.
 - `--org`: Overwrites the organization of the project in your current directory.
 - `--app`: Overwrites the app of the project in your current directory.
-- `--template`: Initiate a new project from a template in the [examples repository](https://github.com/serverless/cloud/tree/main/examples). E.g. `--template=cloud-chat`.
+- `--template`: Initiate a new project from a template in the [templates repository](https://github.com/serverless/cloud/tree/main/templates). E.g. `--template=sveltekit-ts`.
 
 To exit the interactive Cloud Shell, type `exit`.
 

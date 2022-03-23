@@ -5,17 +5,14 @@ import cookieParser from "cookie-parser";
 import mime from "mime-types";
 
 import { login, logout, register, auth } from "./lib/auth";
+import { getImages, getImageById } from "./lib/images";
 
-type Image = {
+type Upload = {
   key: string;
   value: {
     id: string;
-    lastModified: number;
-    size: number;
-    type: string;
-    width: number;
-    height: number;
     username: string;
+    filename: string;
   };
 };
 
@@ -24,67 +21,45 @@ const height = 512;
 
 api.use(cookieParser());
 
-api.post("/login", login(), async function (req: any, res: any) {
+api.post("/api/login", login(), async function (req: any, res: any) {
   res.send({
     user: req.user,
     systemWarning: req.systemWarning,
   });
 });
 
-api.post("/register", register(), async function (req: any, res) {
+api.post("/api/register", register(), async function (req: any, res) {
   res.send({
     user: req.user,
     systemWarning: req.systemWarning,
   });
 });
 
-api.post("/logout", logout(), async function (req: any, res: any) {
+api.post("/api/logout", logout(), async function (req: any, res: any) {
   res.status(204).end();
 });
 
-api.get("/images", async (req, res) => {
-  const { items } = (await data.get("image:*", {
-    limit: 100,
-    reverse: true,
-  })) as {
-    items: Image[];
-  };
+api.get("/api/images", async (req, res) => {
+  const items = await getImages();
 
-  res.json({
-    items: items.map(({ value }) => ({
-      id: value.id,
-      url: `/public/${value.id}-${value.width}-${value.height}.png`,
-      width: value.width,
-      height: value.height,
-      username: value.username,
-    })),
-  });
+  res.json({ items });
 });
 
-api.get("/images/:id", async (req, res) => {
-  const { value } = (await data.get(`image:${req.params.id}`, {
-    meta: true,
-  })) as Image;
-
-  res.json({
-    id: value.id,
-    url: `/public/${value.id}-${value.width}-${value.height}.png`,
-    width: value.width,
-    height: value.height,
-    username: value.username,
-  });
+api.get("/api/images/:id", async (req, res) => {
+  const image = await getImageById(req.params.id);
+  res.json(image);
 });
 
 api.use(auth());
 
-api.get("/me", async (req, res) => {
+api.get("/api/me", async (req: any, res) => {
   res.json({
     user: req.user,
     systemWarning: req.systemWarning,
   });
 });
 
-api.post("/upload-url", async (req, res) => {
+api.post("/api/upload-url", async (req: any, res) => {
   const id = ulid();
 
   const { username } = req.user;
@@ -95,7 +70,7 @@ api.post("/upload-url", async (req, res) => {
     throw new Error("Not an image");
   }
 
-  await data.set(`image:${id}`, {
+  await data.set(`upload:${id}`, {
     id,
     username,
     filename,
@@ -112,12 +87,12 @@ api.post("/upload-url", async (req, res) => {
 storage.on("write:uploads/*", async ({ path }) => {
   const [id] = path.split("/").pop()!.split(".");
 
-  const item = (await data.get(`image:${id}`, {
+  const upload = (await data.get(`upload:${id}`, {
     meta: true,
-  })) as Image;
+  })) as Upload;
 
-  if (!item) {
-    console.log(`Image not found for ID ${id}`);
+  if (!upload) {
+    console.log(`Upload not found for ID ${id}`);
     await storage.remove(path);
     return;
   }
@@ -139,11 +114,22 @@ storage.on("write:public/*", async ({ path }) => {
   const { lastModified, size, type, metadata } = await storage.stat(path);
   const { id } = metadata;
 
+  const upload = (await data.get(`upload:${id}`, {
+    meta: true,
+  })) as Upload;
+
+  if (!upload) {
+    console.log(`Upload not found for ID ${id}`);
+    await storage.remove(path);
+    return;
+  }
+
   await data.set(`image:${id}`, {
     lastModified: lastModified.getTime(),
     size,
     type,
     width,
     height,
+    ...upload.value,
   });
 });
