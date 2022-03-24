@@ -9,7 +9,7 @@ menuOrder: 1
 
 The "cloud" is immensely powerful, but also complex and filled with lots of moving parts. Developers are now wearing more hats than ever before, not only building and designing software, but also becoming cloud architects that need to understand countless cloud services, scalable data engines, distributed systems, and so much more.
 
-<div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/GtLnCy4oVPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/8R4CS_Ry1eg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
 
 ## Write code, not configuration
 
