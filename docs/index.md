@@ -5,7 +5,7 @@ description: Build scalable, highly-secure, pay-per-use applications, without ne
 menuOrder: 1
 -->
 
-# Build faster & better with Serverless Cloud
+# Build better & faster than everyone else
 
 The "cloud" is immensely powerful, but also complex and filled with lots of moving parts. Developers are now wearing more hats than ever before, not only building and designing software, but also becoming cloud architects that need to understand countless cloud services, scalable data engines, distributed systems, and so much more.
 
