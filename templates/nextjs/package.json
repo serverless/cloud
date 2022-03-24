@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Serverless Cloud Next.js template",
   "scripts": {
-    "cloud:start": "next dev",
+    "cloud:dev": "next dev",
     "cloud:build": "next build",
     "lint": "next lint"
   },
@@ -19,7 +19,6 @@
     "swr": "^1.2.2"
   },
   "serverless": {
-    "app": "next-js",
-    "org": "serverless"
+    "app": "next-js"
   }
 }

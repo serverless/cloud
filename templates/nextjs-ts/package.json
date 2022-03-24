@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "cloud:build": "next build",
-    "cloud:start": "next dev",
+    "cloud:dev": "next dev",
     "lint": "next lint"
   },
   "dependencies": {
@@ -23,7 +23,6 @@
     "typescript": "4.6.2"
   },
   "serverless": {
-    "app": "next-js",
-    "org": "serverless"
+    "app": "next-js"
   }
 }
