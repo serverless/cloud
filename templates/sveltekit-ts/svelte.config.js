@@ -10,14 +10,8 @@ const config = withCloud({
 		}),
 	],
 	kit: {
-		prerender: {
-			crawl: true,
-			enabled: true,
-			onError: 'fail',
-			entries: ['*'],
-		},
 		methodOverride: {
-            allowed: ['PUT', 'PATCH', 'DELETE']
+            allowed: ['PATCH', 'DELETE']
         },
         vite: {
             server: {

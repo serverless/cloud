@@ -3,7 +3,7 @@ import withCloud from '@serverless/cloud/svelte'
 export default withCloud({
     kit: {
         methodOverride: {
-            allowed: ['PUT', 'PATCH', 'DELETE']
+            allowed: ['PATCH', 'DELETE']
         },
         vite: {
             server: {
