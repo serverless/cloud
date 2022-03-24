@@ -4,6 +4,6 @@ api.get('/api/healthcheck', (req, res) => {
     res.status(200).send('hello world!')
 })
 
-data.on(['created', 'updated'], async event => {
+data.on(['created', 'updated', 'deleted'], async event => {
     console.log('data event!', event)
 })

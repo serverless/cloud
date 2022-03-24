@@ -18,6 +18,6 @@ export const handle = async ({ event, resolve }) => {
 			})
 		);
 	}
-	
+
 	return response;
 };
