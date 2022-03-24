@@ -2,13 +2,12 @@
   "name": "eleventy",
   "version": "1.0.0",
   "description": "Serverless Cloud Eleventy template",
-  "main": "index.js",
-  "type": "module",
+  "main": "index.mjs",
   "scripts": {
     "start": "cloud",
     "test": "cloud test",
-    "cloud:dev": "eleventy --config=.eleventy.cjs --serve --incremental",
-    "cloud:build": "eleventy --config=.eleventy.cjs"
+    "cloud:dev": "eleventy --serve --incremental",
+    "cloud:build": "eleventy"
   },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.0",
