@@ -13,7 +13,7 @@ api.get("/health", async (req, res) => {
 api.post("/login", login(), async function (req: any, res: any) {
   res.send({
     token: req.token,
-    user: req.user,
+    user: res.locals.user,
     systemWarning: req.systemWarning,
   });
 });
@@ -21,7 +21,7 @@ api.post("/login", login(), async function (req: any, res: any) {
 api.post("/register", register(), async function (req: any, res) {
   res.send({
     token: req.token,
-    user: req.user,
+    user: res.locals.user,
     systemWarning: req.systemWarning,
   });
 });
@@ -29,21 +29,21 @@ api.post("/register", register(), async function (req: any, res) {
 api.use(auth());
 
 api.get("/messages", async (req, res) => {
-  const result = await data.getMessages(req.query.convId);
+  const result = await data.getMessages(req.query.convId.toString());
   res.json(result);
 });
 
 api.post("/messages", async (req, res) => {
   const result = await data.sendMessage(
     req.body.convId,
-    req.user.id,
+    res.locals.user.id,
     req.body.text
   );
   res.json(result);
 });
 
 api.get("/conversations", async (req, res) => {
-  const result = await data.getConversations(req.user.id);
+  const result = await data.getConversations(res.locals.user.id);
   res.json(result);
 });
 
@@ -53,12 +53,12 @@ api.post("/conversations", async (req, res) => {
 });
 
 api.put("/typing", async (req, res) => {
-  await data.setTyping(req.user.id, req.body.convId, req.body.typing);
+  await data.setTyping(res.locals.user.id, req.body.convId, req.body.typing);
   res.status(200).end();
 });
 
 api.put("/me", async (req: any, res) => {
-  const user = await data.updateUser(req.user.id, req.body);
+  const user = await data.updateUser(res.locals.user.id, req.body);
   res.json(user);
 });
 
@@ -71,12 +71,12 @@ api.get("/users", async (req, res) => {
   if (req.query["sw.lat"]) {
     const result = await data.listUsersInRect({
       sw: {
-        lat: Number.parseFloat(req.query["sw.lat"]),
-        lon: Number.parseFloat(req.query["sw.lon"]),
+        lat: Number.parseFloat(req.query["sw.lat"].toString()),
+        lon: Number.parseFloat(req.query["sw.lon"].toString()),
       },
       ne: {
-        lat: Number.parseFloat(req.query["ne.lat"]),
-        lon: Number.parseFloat(req.query["ne.lon"]),
+        lat: Number.parseFloat(req.query["ne.lat"].toString()),
+        lon: Number.parseFloat(req.query["ne.lon"].toString()),
       },
     });
 
@@ -86,10 +86,10 @@ api.get("/users", async (req, res) => {
 
   if (req.query["center.lat"]) {
     const center = {
-      lat: Number.parseFloat(req.query["center.lat"]),
-      lon: Number.parseFloat(req.query["center.lon"]),
+      lat: Number.parseFloat(req.query["center.lat"].toString()),
+      lon: Number.parseFloat(req.query["center.lon"].toString()),
     };
-    const radius = Number.parseFloat(req.query.radius);
+    const radius = Number.parseFloat(req.query.radius.toString());
     const result = await data.listUsersInCircle(center, radius);
     res.json(result);
     return;

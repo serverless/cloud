@@ -29,13 +29,13 @@ export function login() {
         throw new Error("Invalid password");
       }
 
-      req.user = {
+      res.locals.user = {
         id: user.id,
         name: user.name,
         username: user.username,
       };
 
-      req.token = await createUserToken(req.user);
+      req.token = await createUserToken(res.locals.user);
 
       if (!params.TOKEN_SECRET) {
         req.systemWarning =
@@ -66,13 +66,13 @@ export function register() {
 
       const user = await createUser(req.body);
 
-      req.user = {
+      res.locals.user = {
         id: user.id,
         name: user.name,
         username: user.username,
       };
 
-      req.token = await createUserToken(req.user);
+      req.token = await createUserToken(res.locals.user);
 
       if (!params.TOKEN_SECRET) {
         req.systemWarning =
@@ -100,7 +100,7 @@ export function auth() {
   return async function (req, res, next) {
     try {
       const token = req.get("Authorization")?.replace("Bearer ", "");
-      req.user = jwt.verify(token, TOKEN_SECRET);
+      res.locals.user = jwt.verify(token, TOKEN_SECRET);
       return next();
     } catch (error) {
       console.log("auth()", error);
