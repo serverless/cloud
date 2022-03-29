@@ -23,5 +23,5 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: v16
-      - run: npm ci
+      - run: npm install
       - run: npm run preview:delete

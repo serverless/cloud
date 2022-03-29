@@ -23,5 +23,4 @@ jobs:
           node-version: v16
       - run: npm install
       - run: npm test
-      - run: npm run build:frontend
       - run: npm run deploy
