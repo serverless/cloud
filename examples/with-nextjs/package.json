@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "cloud:build": "next build",
-    "cloud:start": "next dev",
+    "cloud:dev": "next dev",
     "lint": "next lint"
   },
   "dependencies": {
