@@ -49,34 +49,29 @@ Install dependencies
 npm i
 ```
 
-## Local dev
+Install Serverless Cloud if you haven't already
 
-You can run the frontend on localhost and talk to the Cloud API.
+```
+npm i -g @serverless/cloud
+```
 
-1. Run `npm start` in the `cloud-chat` root folder
-1. Note the URL of your developer sandbox
-1. Change `NEXT_PUBLIC_API_URL` in `frontend/.env.development` to your developer sandbox URL
-1. Run `npm start` in the frontend folder
-1. Visit the app at [http://localhost:3001](http://localhost:3001)
+## Local development
 
-## Developer sandbox
+In one terminal window, run `cloud dev` to run the Next.js dev server.
 
-To deploy the frontend to your developer sandbox:
+In another terminal window, run `cloud` to run the Serverless Cloud shell.
 
-1. Run `npm start` in the `cloud-chat` root folder
-1. Run `npm run build` in the frontend folder. The build output will be synced to your developer sandbox.
-1. Visit the app using your developer sandbox URL
+The application will be available at http://localhost:3000
 
 ## Deploy to production
 
-1. Run `npm run build` in the frontend folder
-1. Run `npx run deploy` in the `cloud-chat` root folder
+`cloud deploy production`
 
-The app will be deployed to the `production` instance.
+The production URL will be displayed when the deployment is complete.
 
 ## Backend tests
 
-Run backend tests using `npm test` in the `cloud-chat` root folder
+`cloud test`
 
 ## Token Secret
 

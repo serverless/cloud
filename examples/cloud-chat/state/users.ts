@@ -26,7 +26,6 @@ class Users {
   }
 
   async fetchInternal() {
-    const token = await auth.getToken();
     const searchParams = new URLSearchParams();
     if (this.bounds?.sw) {
       searchParams.append("sw.lat", this.bounds.sw.lat);
@@ -39,11 +38,7 @@ class Users {
       searchParams.append("center.lon", this.center.lon);
       searchParams.append("radius", this.radius);
     }
-    const response = await fetch(`/users?${searchParams}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(`/users?${searchParams}`);
 
     const { items } = await response.json();
     this.items = (items || []).filter((item) => item.value.id !== auth.user.id);
@@ -52,12 +47,7 @@ class Users {
 
   async getUser(id) {
     if (!this.userCache.get(id)) {
-      const token = await auth.getToken();
-      const response = await fetch('/users/${id}', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await fetch('/users/${id}');
 
       const user = await response.json();
       this.userCache.set(id, user);

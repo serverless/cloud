@@ -3,31 +3,15 @@
     "baseUrl": ".",
     "moduleResolution": "node",
     "paths": {
-      "@components/*": [
-        "components/*"
-      ],
-      "@icons/*": [
-        "icons/*"
-      ],
-      "@views/*": [
-        "views/*"
-      ],
-      "@layout/*": [
-        "layout/*"
-      ],
-      "@events/*": [
-        "events/*"
-      ],
-      "@state/*": [
-        "state/*" 
-      ]
+      "@components/*": ["components/*"],
+      "@icons/*": ["icons/*"],
+      "@views/*": ["views/*"],
+      "@layout/*": ["layout/*"],
+      "@events/*": ["events/*"],
+      "@state/*": ["state/*"]
     },
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -40,14 +24,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "exclude": [
-    "node_modules",
-    ".next",
-    "out"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "exclude": ["node_modules", ".next", "out"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

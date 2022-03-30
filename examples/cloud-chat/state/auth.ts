@@ -1,15 +1,32 @@
 import { proxy } from "valtio";
 
 class Auth {
-  token: string
   user;
+  busy = true;
   isAuthenticated = false;
   error;
   position;
   systemWarning;
 
+  async init() {
+    const response = await fetch("/me");
+
+    const { user, systemWarning } = await response.json();
+
+    if (user) {
+      this.user = user;
+      this.isAuthenticated = true;
+      this.watchPosition();
+    }
+
+    this.systemWarning = systemWarning;
+    this.busy = false
+  }
+
   async login({ username, password }) {
-    const response = await fetch('/login', {
+    this.busy = true;
+
+    const response = await fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,19 +34,21 @@ class Auth {
       body: JSON.stringify({ username, password }),
     });
 
-    const { token, user, message, systemWarning } = await response.json();
-    if (token) {
-      this.token = token;
+    const { user, message, systemWarning } = await response.json();
+    if (user) {
       this.user = user;
       this.isAuthenticated = true;
       this.watchPosition();
     }
     this.error = message;
     this.systemWarning = systemWarning;
+    this.busy = false
   }
 
   async register({ username, password, name }) {
-    const response = await fetch('/register', {
+    this.busy = true;
+
+    const response = await fetch("/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,33 +56,34 @@ class Auth {
       body: JSON.stringify({ username, password, name }),
     });
 
-    const { token, user, message, systemWarning } = await response.json();
-    if (token) {
-      this.token = token;
+    const { user, message, systemWarning } = await response.json();
+    if (user) {
       this.user = user;
       this.isAuthenticated = true;
       this.watchPosition();
     }
     this.error = message;
     this.systemWarning = systemWarning;
+    this.busy = false
   }
 
   async logout() {
-    this.token = undefined;
+    await fetch("/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
     this.user = undefined;
     this.isAuthenticated = false;
     this.error = undefined;
   }
 
-  getToken() {
-    return this.token;
-  }
-
   async updatePosition() {
-    const response = await fetch('/me', {
+    const response = await fetch("/me", {
       method: "PUT",
       headers: {
-        Authorization: `Bearer ${this.token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify(this.position),

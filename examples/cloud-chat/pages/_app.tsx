@@ -1,18 +1,22 @@
 import Head from "next/head";
+import { useEffect } from "react";
+import { useSnapshot } from "valtio";
+import SSRProvider from "react-bootstrap/SSRProvider";
 
+import SystemWarning from "@components/SystemWarning";
 import "../style/index.css";
 
-function SafeHydrate({ children }) {
-  return (
-    <div suppressHydrationWarning>
-      {typeof window === "undefined" ? null : children}
-    </div>
-  );
-}
+import auth from "@state/auth";
 
 export default function MyApp({ Component, pageProps }) {
+  const { systemWarning } = useSnapshot(auth);
+
+  useEffect(() => {
+    auth.init();
+  }, []);
+
   return (
-    <SafeHydrate>
+    <SSRProvider>
       <Head>
         <link
           rel="stylesheet"
@@ -27,7 +31,8 @@ export default function MyApp({ Component, pageProps }) {
           crossOrigin=""
         ></script>
       </Head>
+      {systemWarning && <SystemWarning message={systemWarning} />}
       <Component {...pageProps} />
-    </SafeHydrate>
+    </SSRProvider>
   );
 }
