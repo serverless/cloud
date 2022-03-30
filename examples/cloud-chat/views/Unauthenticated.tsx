@@ -1,15 +1,43 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useSnapshot } from "valtio";
-import Button from "react-bootstrap/Button";
+
+import Button from "@components/Button";
 import authState from "../state/auth";
 
 export default function Unauthenticated() {
+  const nameInputRef = useRef(null);
+  const usernameInputRef = useRef(null);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [register, setRegister] = useState(false);
 
   const auth = useSnapshot(authState);
+
+  useEffect(() => {
+    if (register) {
+      nameInputRef.current?.focus();
+    } else {
+      usernameInputRef.current?.focus();
+    }
+  }, [register]);
+
+  const onKeyUp = useCallback(
+    (e) => {
+      if (e.code === "Enter") {
+        e.preventDefault();
+        register
+          ? authState.register({ name, username, password })
+          : authState.login({ username, password });
+      }
+    },
+    [name, password, register, username]
+  );
+
+  if (auth.busy) {
+    return null;
+  }
 
   return (
     <div className="d-flex vh-100 align-items-center">
@@ -33,6 +61,7 @@ export default function Unauthenticated() {
                 className="form-control"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
+                onKeyUp={onKeyUp}
               />
             </div>
           )}
@@ -48,6 +77,7 @@ export default function Unauthenticated() {
               className="form-control"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              onKeyUp={onKeyUp}
             />
           </div>
           <div className="mb-3">
@@ -61,6 +91,7 @@ export default function Unauthenticated() {
               name="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyUp={onKeyUp}
             />
           </div>
           {!register && (

@@ -1,10 +1,10 @@
 import { api } from "@serverless/cloud";
-import cors from "cors";
+import cookieParser from "cookie-parser";
 
 import * as data from "./lib/data";
-import { login, register, auth } from "./lib/auth";
+import { login, logout, register, auth } from "./lib/auth";
 
-api.use(cors());
+api.use(cookieParser());
 
 api.get("/health", async (req, res) => {
   res.send({ status: "ok" });
@@ -12,21 +12,31 @@ api.get("/health", async (req, res) => {
 
 api.post("/login", login(), async function (req: any, res: any) {
   res.send({
-    token: req.token,
     user: res.locals.user,
-    systemWarning: req.systemWarning,
+    systemWarning: res.locals.systemWarning,
   });
 });
 
 api.post("/register", register(), async function (req: any, res) {
   res.send({
-    token: req.token,
     user: res.locals.user,
-    systemWarning: req.systemWarning,
+    systemWarning: res.locals.systemWarning,
   });
 });
 
+api.post("/logout", logout(), async function (req: any, res: any) {
+  res.status(204).end();
+});
+
 api.use(auth());
+
+api.get("/me", async (req: any, res) => {
+  const user = await data.getUser(res.locals.user.id);
+  res.json({
+    user,
+    systemWarning: res.locals.systemWarning,
+  });
+});
 
 api.get("/messages", async (req, res) => {
   const result = await data.getMessages(req.query.convId.toString());

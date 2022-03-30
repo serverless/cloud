@@ -120,11 +120,9 @@ class Messages {
   }
 
   async putTypingState(convId, typing) {
-    const token = await auth.getToken();
     await fetch("/typing", {
       method: "PUT",
       headers: {
-        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -135,12 +133,7 @@ class Messages {
   }
 
   async getConversations() {
-    const token = await auth.getToken();
-    const response = await fetch("/conversations", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch("/conversations");
     return response.json();
   }
 
@@ -148,12 +141,7 @@ class Messages {
     if (!convId || convId === "new-conversation") {
       return { items: [] };
     }
-    const token = await auth.getToken();
-    const response = await fetch(`/messages?convId=${convId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(`/messages?convId=${convId}`);
     return response.json();
   }
 
@@ -201,11 +189,9 @@ class Messages {
   }
 
   async createConversation() {
-    const token = await auth.getToken();
     const response = await fetch("/conversations", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -230,11 +216,9 @@ class Messages {
       this.selectedConversationId = await this.createConversation();
     }
 
-    const token = await auth.getToken();
     await fetch("/messages", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
