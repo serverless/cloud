@@ -59,11 +59,11 @@ Deploys code from one stage to another stage. If `from` and `to` are not provide
 
 ### `import [FILENAME] [--overwrite] `
 
-Seeds data from the `FILENAME` in your local directory to your **developer sandbox**. If no `FILENAME` is provided, it will default to `data.json`. By default, the data will be merged with existing data. If you specify the `--overwrite` flag, all data will be cleared and reseeded.
+Seeds data from the `FILENAME` in your local directory to your **developer sandbox**. If no `FILENAME` is provided, it will default to `data.json`. By default, the data will be merged with existing data. If you specify the `-o` or `--overwrite` flag, all data will be cleared and reseeded.
 
 ### `export [FILENAME] [--overwrite] `
 
-Exports data from your **developer sandbox** to a JSON file named `FILENAME` in your current working directoy. If no `FILENAME` is provided, it will default to `data.json`. If the `FILENAME` already exists, you can specify the `--overwrite` flag to overwrite the existing file.
+Exports data from your **developer sandbox** to a JSON file named `FILENAME` in your current working directoy. If no `FILENAME` is provided, it will default to `data.json`. If the `FILENAME` already exists, you can specify the `-o` or `--overwrite` flag to overwrite the existing file.
 
 ### `test`
 
@@ -145,7 +145,7 @@ Installs the specified npm package into your application. If you did not provide
 
 Uninstalls the specified npm package from your application.
 
-### `cloud clone [@ORG_NAME/APP_NAME/INSTANCE_NAME] [--overwrite]`
+### `cloud clone [@ORG_NAME/APP_NAME/INSTANCE_NAME] [-overwrite]`
 
 Copies **code** AND **data** from `INSTANCE_NAME` of service `APP_NAME` of org `ORG_NAME` to your local directory and your **developer sandbox**. If `ORG_NAME` is not specified it will clone from the logged in organization. Note that you should have access to the given org name otherwise the operation fails. `INSTANCE_NAME` can specify either a stage (like `prod` or `dev`), or a preview instance. If your current directory is not empty, you can use the optional `--overwrite` (or `-o`) flag. If no `APP_NAME` is specified, it will default to the app in your current directory. If not `INSTANCE_NAME` is specified, it will display a list of available instance to choose from.
 
