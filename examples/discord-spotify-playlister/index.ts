@@ -96,7 +96,7 @@ api.post('/discord', api.rawBody, verifyKeyMiddleware(params.DISCORD_PUBLIC_KEY)
 
   if (message.type === InteractionType.APPLICATION_COMMAND) {
     switch (commandName) {
-      case 'pong': {
+      case 'ping': {
         return reply('Pong')
       }
       case 'view': {
