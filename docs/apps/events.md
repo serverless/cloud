@@ -77,3 +77,11 @@ Internally, events are placed in a queue and processed as fast as possible. The 
 There is no guarantee that events will be processed in order, and no guarantee that your handler will only get called once for each event, so your application needs to handle out-of-order events and duplicate events.
 
 If any of your handlers throw an error, processing is considered to have failed. Failed events are retried every six minutes, for up to 14 days, after which the event is dropped.
+
+## Reacting changes in Serverless Data
+
+Serverless Cloud allows you to build event-driven workflows by dispatching the change events using `data.on()` from `data` interface of the SDK. This allows you to decouple your API endpoints from the business logic that can be run asynchronously. See [here](/cloud/docs/apps/data#reacting-to-changes) for more detailed information on how to build event-driven apps based on Serverless Data.
+
+## Reacting changes in Serverless Storage 
+
+Serverless Storage emits events when a new file is added or updated for a stage. Developers can register events for such changes in storage using `storage.on()` function from `storage` interface of SDK. This is particularly useful when it's required to make async changes without blocking the API that helps user [upload files](/cloud/docs/apps/api#handling-uploads). See [here](/cloud/docs/apps/blob-storage#listeners) for more information.
