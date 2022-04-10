@@ -1,0 +1,8 @@
+node_modules
+
+.cache
+.env
+.output
+
+build
+public/build

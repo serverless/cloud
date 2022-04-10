@@ -45,14 +45,17 @@ npm install -g @serverless/cloud
 
 # Development environment
 
-Clone this repo, then install dependencies and start your dev sandbox:
+Clone this repo, then install dependencies:
 
 ```bash
 npm install
-cloud
 ```
 
-That will start the Next.js dev server on port 3000. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+In one terminal window, run `cloud dev` to start the Next.js development server.
+
+In another terminal window run `cloud` to start the interactive Serverless Cloud shell.
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
 # Deploy to production
 

@@ -54,7 +54,7 @@ export async function getConversations(userId: UserId) {
   return { items };
 }
 
-export async function getMessages(convId: string): Promise<ItemList<Message>> {
+export async function getMessages(convId: string) {
   return data.get(`conv_${convId}:msg_*`);
 }
 
@@ -84,12 +84,12 @@ export async function createConversation(
 ): Promise<Conversation> {
   const convId = (await ksuid.random()).string;
   const users = await Promise.all(
-    userIds.map((userId) => data.get(`user:${userId}`))
+    userIds.map((userId) => data.get<User>(`user:${userId}`))
   );
 
   // Create a conversation item for each user
   await Promise.all(
-    users.map((user: any) => createUserConversation(convId, user, users))
+    users.map((user: any) => createUserConversation(convId, user, users as User[]))
   );
 
   return { value: { convId } };
@@ -191,7 +191,7 @@ export async function listUsersInRect(rect: Rect): Promise<ItemList<User>> {
   );
 
   const items = [];
-  for (var result of results) {
+  for (var result of results as any) {
     items.push(
       ...result.items.filter(({ value }) => {
         return region.containsLL(geo.point(value.lat, value.lon));
@@ -220,7 +220,7 @@ export async function listUsersInCircle(
   );
 
   const items = [];
-  for (var result of results) {
+  for (var result of results as any) {
     items.push(
       ...result.items.filter(({ value }) =>
         geo.pointInCircle({ lat: value.lat, lon: value.lon }, center, radius)
@@ -230,7 +230,7 @@ export async function listUsersInCircle(
   return { items };
 }
 
-export async function listAllUsers(): Promise<ItemList<User>> {
+export async function listAllUsers() {
   const result = await data.get("user:*");
   return result;
 }

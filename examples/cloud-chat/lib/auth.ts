@@ -8,6 +8,10 @@ const TOKEN_SECRET = params.TOKEN_SECRET || "replace-me";
 
 const pbkdf2 = util.promisify(crypto.pbkdf2);
 
+const systemWarning = !params.TOKEN_SECRET
+  ? "Make sure to set the TOKEN_SECRET parameter to secure your login tokens"
+  : "";
+
 export function login() {
   return async (req, res, next) => {
     try {
@@ -29,26 +33,32 @@ export function login() {
         throw new Error("Invalid password");
       }
 
-      req.user = {
+      res.locals.user = {
         id: user.id,
         name: user.name,
         username: user.username,
       };
 
-      req.token = await createUserToken(req.user);
+      req.token = await createUserToken(res.locals.user);
+      res.locals.systemWarning = systemWarning;
 
-      if (!params.TOKEN_SECRET) {
-        req.systemWarning =
-          "Make sure to set the TOKEN_SECRET parameter to secure your login tokens";
-      }
+      res.cookie("sid", req.token);
 
       return next();
     } catch (error) {
       console.log(error);
       return res.status(403).send({
         message: "Login failed",
+        systemWarning,
       });
     }
+  };
+}
+
+export function logout() {
+  return async (req, res, next) => {
+    res.clearCookie("sid");
+    return next();
   };
 }
 
@@ -66,24 +76,23 @@ export function register() {
 
       const user = await createUser(req.body);
 
-      req.user = {
+      res.locals.user = {
         id: user.id,
         name: user.name,
         username: user.username,
       };
 
-      req.token = await createUserToken(req.user);
+      req.token = await createUserToken(res.locals.user);
+      res.locals.systemWarning = systemWarning;
 
-      if (!params.TOKEN_SECRET) {
-        req.systemWarning =
-          "Make sure to set the TOKEN_SECRET parameter to secure your login tokens";
-      }
+      res.cookie("sid", req.token);
 
       return next();
     } catch (error) {
       console.log(error);
       return res.status(403).send({
         message: error.message,
+        systemWarning,
       });
     }
   };
@@ -99,13 +108,17 @@ async function createUserToken(user) {
 export function auth() {
   return async function (req, res, next) {
     try {
-      const token = req.get("Authorization")?.replace("Bearer ", "");
-      req.user = jwt.verify(token, TOKEN_SECRET);
+      const token =
+        req.cookies?.sid || req.get("Authorization")?.replace("Bearer ", "");
+
+      res.locals.user = jwt.verify(token, TOKEN_SECRET);
+      res.locals.systemWarning = systemWarning;
+
       return next();
     } catch (error) {
-      console.log("auth()", error);
       res.status(403).send({
         message: "Invalid authorization token",
+        systemWarning,
       });
     }
   };

@@ -1,0 +1,1 @@
+export { data } from '@serverless/cloud'

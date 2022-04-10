@@ -36,6 +36,12 @@
     "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/astro.svg"
   },
   {
+    "name": "astro-ssr",
+    "title": "Astro",
+    "description": "Astro.build SSR starter (beta)",
+    "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/astro.svg"
+  },
+  {
     "name": "nextjs",
     "title": "Next.js",
     "description": "Next.js starter app",

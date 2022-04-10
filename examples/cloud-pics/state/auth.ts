@@ -17,7 +17,6 @@ class Auth {
       this.isAuthenticated = true;
     }
 
-    // this.error = message;
     this.systemWarning = systemWarning;
   }
 

@@ -1,28 +1,43 @@
 {
   "name": "cloud-chat",
   "description": "Serverless Cloud chat application example",
+  "private": true,
   "type": "module",
   "main": "index.ts",
   "scripts": {
-    "build:frontend": "npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "cloud",
+    "cloud:build": "next build",
+    "cloud:dev": "next dev",
+    "lint": "next lint",
     "deploy": "cloud deploy production",
-    "preview:deploy": "cloud deploy ${PREVIEW_INSTANCE_NAME}",
+    "preview:deploy": "cloud deploy --type preview ${PREVIEW_INSTANCE_NAME}",
     "preview:delete": "cloud delete ${PREVIEW_INSTANCE_NAME}",
     "test": "cloud test"
   },
   "dependencies": {
-    "@jest/globals": "^27.2.5",
-    "cors": "^2.8.5",
+    "cookie-parser": "^1.4.6",
     "jsonwebtoken": "^8.5.1",
     "ksuid": "^3.0.0",
     "long": "^5.2.0",
+    "next": "^12.0.10",
     "nodes2ts": "^2.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@jest/globals": "^27.2.5",
     "@serverless/cloud": "^2.0.0",
-    "@types/jest": "^27.0.2"
+    "@types/jest": "^27.0.2",
+    "bootstrap": "^5.0.2",
+    "clsx": "^1.1.1",
+    "eslint": "^8.8.0",
+    "eslint-config-next": "^12.0.10",
+    "lib0": "^0.2.42",
+    "lodash": "^4.17.21",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.0.0-beta.4",
+    "react-div-100vh": "^0.7.0",
+    "react-dom": "^17.0.2",
+    "react-leaflet": "^3.2.0",
+    "valtio": "^1.2.4"
   },
   "serverless": {
     "org": "serverless",

@@ -29,7 +29,7 @@ export default function Login() {
     if (auth.user) {
       router.push("/");
     }
-  }, [auth.user]);
+  }, [auth.user, router]);
 
   return (
     <div className="d-flex vh-100 align-items-center">
