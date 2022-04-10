@@ -17,5 +17,9 @@
   "dependencies": {
     "@serverless/cloud": "^2.10.0",
     "svelte": "^3.46.6"
+  },
+  "serverless": {
+    "app": "astro-ssr-starter"
   }
+}
 }
