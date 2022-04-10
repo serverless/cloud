@@ -37,7 +37,7 @@
   },
   {
     "name": "astro-ssr",
-    "title": "Astro",
+    "title": "Astro SSR (beta)",
     "description": "Astro.build SSR starter (beta)",
     "image": "https://s3.us-east-2.amazonaws.com/assets.public.serverless/cloud/astro.svg"
   },
