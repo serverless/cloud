@@ -42,6 +42,8 @@ See the [Express documentation on handling errors](https://expressjs.com/en/guid
 To return your `index.html` page for any missing path, you can add a 404 handler with the `http` interface:
 
 ```javascript
+import { http } from "@serverless/cloud";
+
 http.on(404, "index.html");
 ```
 
