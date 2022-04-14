@@ -29,3 +29,10 @@ For many cases, there's a stage that mimics the production. Developers push thei
 # GUI tests are okay. Let's promote the code to prod from staging
 > cloud promote staging prod
 ```
+
+## Promoting full-stack applications
+
+Full-stack applications that have a build step are not re-built during promotion.
+
+For example, in a Next.js app with statically generated pages, any references to environment variables, parameters, or data at build time will be
+baked into your build, and will remain in the build when promoted to a different stage.
