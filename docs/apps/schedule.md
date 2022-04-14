@@ -6,9 +6,9 @@ menuOrder: 3
 parent: Building Applications
 ---
 
-# Scheduling Tasks
+# Scheduled Tasks
 
-Serverless Cloud also supports scheduled tasks, which you can create using the `schedule` interface. You can either use the `.every()` method for having tasks repeat on a regular time interval.Or you can use the `.cron()` method to have more fine-grained control.
+Serverless Cloud also supports scheduled tasks, which you can create using the `schedule` interface. You can either use the `.every()` method for having tasks repeat on a regular time interval or you can use the `.cron()` method to have more fine-grained control.
 
 ## Scheduling tasks with `.every()`
 
