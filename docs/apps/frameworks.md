@@ -55,12 +55,12 @@ GraphQL apis are supported with some additional boilerplate.
 
 ### express-graphql
 
-```javascript
-const { api} = require("@ serverless/cloud");
-const { graphqlHTTP } = require('express-graphql');
-const { buildSchema, GraphQLSchema } = require('graphql');
+```typescript
+import { api } from "@serverless/cloud";
+import { graphqlHTTP } from "express-graphql";
+import { buildSchema, GraphQLSchema } from "graphql";
 
-api.use('/graphql', graphqlHTTP({
+api.use("/graphql", graphqlHTTP({
   schema: schma,
   rootValue: rslvrs,
   graphiql: true,
@@ -68,9 +68,9 @@ api.use('/graphql', graphqlHTTP({
 ```
 
 ### apollo-server-express
-```javascript
+```typescript
 import { api } from "@serverless/cloud";
-import { ApolloServer } from 'apollo-server-express';
+import { ApolloServer } from "apollo-server-express";
 
 class ServerlessCloudApollo extends ApolloServer {
   serverlessFramework() {
@@ -90,7 +90,7 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    hello: () => 'Hello world!',
+    hello: () => "Hello world!",
   },
 };
 
