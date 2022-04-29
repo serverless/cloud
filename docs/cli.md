@@ -37,17 +37,25 @@ To exit the interactive Cloud Shell, type `exit`.
 
 ![Serverless Cloud interactive Cloud Shell](https://user-images.githubusercontent.com/2053544/135511480-748cd463-9ff1-43a8-ab62-88ac78d2d75d.png)
 
+### `dev`
+
+Starts the local development server in a child process, if a script named `cloud:dev` is defined in `package.json`.
+
 ### `share [NAME]`
 
-Deploys the **code AND data** from your **pdeveloper sandbox** to a **preview instance** named `NAME`. If no `NAME` is provided, a randomly generated name will be created for you.
+Deploys the **code AND data** from your **developer sandbox** to a **preview instance** named `NAME`. If no `NAME` is provided, a randomly generated name will be created for you.
 
 A **preview instance** is an ephermeral instance that you can use to easily share your work with others. Preview instances allow you to create a stable snapshots of your **developer sandbox** so that you can get feedback while continuing to make changes to your own version.
+
+If a script named `cloud:build` is defined in `package.json`, it will be run before deploying.
 
 ### `deploy [STAGE]`
 
 Deploys the **code** from your **developer sandbox** to the provided `STAGE`. If no `STAGE` is provided, it will prompt you to enter a `STAGE`.
 
 A `STAGE` is a long-lived instance/environment that hosts your app. Common names for `STAGE`s are `prod`, `staging`, `qa`, and `dev`.
+
+If a script named `cloud:build` is defined in `package.json`, it will be run before deploying.
 
 ### `delete [STAGE]`
 
@@ -65,9 +73,13 @@ Seeds data from the `FILENAME` in your local directory to your **developer sandb
 
 Exports data from your **developer sandbox** to a JSON file named `FILENAME` in your current working directoy. If no `FILENAME` is provided, it will default to `data.json`. If the `FILENAME` already exists, you can specify the `-o` or `--overwrite` flag to overwrite the existing file.
 
-### `test`
+### `test [PATTERN] [--workers <n>]`
 
 Runs defined tests against your connected developer sandbox. Please note that this will use and (depending on your tests) potentially modify data in your developer sandbox. To run these tests on an isolated instance, exit the shell and run `cloud test`.
+
+If `[PATTERN]` is specified, only test files that match the pattern will be run. The pattern is a regular expression that is matched against the test file path.
+
+If `--workers <n>` is specified, up to `<n>` workers will be used to run tests in parallel. Note that for this to work, your tests must be independent of each other and not rely on any shared data.
 
 ### `install [PACKAGENAME]`
 
@@ -187,9 +199,13 @@ Headless mode allows developers to run commands from [CI/CD](/cloud/docs/workflo
 
 The following commands are supported in headless mode:
 
-### `cloud test`
+### `cloud test [PATTERN] [--workers <n>]`
 
 Deploys code from the current directory and run tests in an isolated instance. After tests are complete, the instance is automatically terminated.
+
+If `[PATTERN]` is specified, only test files that match the pattern will be run. The pattern is a regular expression that is matched against the test file path.
+
+If `--workers <n>` is specified, up to `<n>` workers will be used to run tests in parallel. Note that for this to work, your tests must be independent of each other and not rely on any shared data.
 
 ### `cloud deploy {STAGE}`
 
