@@ -4,7 +4,7 @@ First start your developer sandbox:
 
 ```
 npm install
-cloud
+cloud dev
 ```
 
 Visit the dev site at http://localhost:3000

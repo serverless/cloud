@@ -157,6 +157,49 @@ Let's make a change and break the tests. In `api.test.js` change "Something to d
 
 Jest provides a detailed report including the reason the test failed and the code location, so you can make the fix and re-run the tests.
 
+## Test options
+
+The test command has some optional arguments:
+
+```
+test <regexPattern> --coverage --workers <n>
+```
+
+### `<regexPattern>`
+
+*Default: match all files*
+
+Lets you run only tests that match the regular expression. For example, to only run tests files with "api" in the filename:
+
+```
+test api
+```
+
+Use `/` to match sub-directories:
+
+```
+test integration/api
+```
+
+You may need to put quotes around more complex patterns that contain an asterisk:
+
+```
+test "api\..*"
+```
+
+### `--coverage`
+
+*Default: off*
+
+Generates test coverage data in the `coverage` folder. Coverage data is output in these formats: `text-summary`, `text`, `clover`, `lcov`, `json`.
+
+### `--workers <n>`
+
+*Default: 1*
+
+Uses `<n>` workers to run your tests in parallel. This may speed up your tests if you have a lot of them and they are independent of each other.
+
+
 ## Test interfaces
 
 Serverless Cloud's runtime provides interfaces that make it easy to invoke your event handlers in tests, and to seed data.

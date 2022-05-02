@@ -50,6 +50,57 @@ Then you can create routes and use middleware as usual.
   })
 ```
 
+## Using with GraphQL
+GraphQL apis are supported with some additional boilerplate.
+
+### express-graphql
+
+```typescript
+import { api } from "@serverless/cloud";
+import { graphqlHTTP } from "express-graphql";
+import { buildSchema, GraphQLSchema } from "graphql";
+
+api.use("/graphql", graphqlHTTP({
+  schema: schma,
+  rootValue: rslvrs,
+  graphiql: true,
+}));
+```
+
+### apollo-server-express
+```typescript
+import { api } from "@serverless/cloud";
+import { ApolloServer } from "apollo-server-express";
+
+class ServerlessCloudApollo extends ApolloServer {
+  serverlessFramework() {
+    return true;
+  }
+
+  async ensureStarted(){
+    await super.ensureStarted();
+  }
+}
+
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
+
+const resolvers = {
+  Query: {
+    hello: () => "Hello world!",
+  },
+};
+
+const server = new ServerlessCloudApollo({ typeDefs, resolvers });
+// you can use top-level await here as long as your package.json type is "module" and tsconfig has "module" and "target" set to esnext.
+await server.ensureStarted();
+
+api.use(server.getMiddleware({ path: '/graphql'}));
+```
+
 ## Limitations
 
 Your code is running in a distributed serverless environment. You cannot rely on your server being 'up' in the sense that you can/should not use in-memory sessions, web sockets, etc. You are also subject to restrictions on Serverless Cloud's request/response size, maximum duration, etc.
