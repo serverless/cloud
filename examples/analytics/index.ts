@@ -40,39 +40,29 @@ events.on("visit", async (event) => {
   const month = day.slice(0, 6);
   const year = month.slice(0, 4);
 
-  // TODO: use atomic increments when data supports it
-
-  const [host, h, d, m, y] = await Promise.all([
-    data.get(`host_${key}`, { meta: false }),
-    data.get(`host_${key}_h:${hour}`, { meta: false }),
-    data.get(`host_${key}_d:${day}`, { meta: false }),
-    data.get(`host_${key}_m:${month}`, { meta: false }),
-    data.get(`host_${key}_y:${year}`, { meta: false }),
-  ]);
-
   await Promise.all([
     data.set(
       `host_${key}`,
       {
         hostname,
         pathname,
-        value: ((host as any)?.value || 0) + 1, // total visits
+        value: { $add: 1 }, // total visits
       },
       {
         label1: `hosts:${key}`,
       }
     ),
     data.set(`host_${key}_h:${hour}`, {
-      value: ((h as any)?.value || 0) + 1,
+      value: { $add: 1 },
     }),
     data.set(`host_${key}_d:${day}`, {
-      value: ((d as any)?.value || 0) + 1,
+      value: { $add: 1 },
     }),
     data.set(`host_${key}_m:${month}`, {
-      value: ((m as any)?.value || 0) + 1,
+      value: { $add: 1 },
     }),
     data.set(`host_${key}_y:${year}`, {
-      value: ((y as any)?.value || 0) + 1,
+      value: { $add: 1 },
     }),
   ]);
 });
