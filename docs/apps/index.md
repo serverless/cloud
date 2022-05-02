@@ -33,6 +33,7 @@ Learn more about these SDK interfaces and how to use them:
 - [Static Assets](/cloud/docs/apps/static-assets)
 - [Parameters](/cloud/docs/apps/params)
 - [Bring Your Own Framework](/cloud/docs/apps/frameworks)
+- [Frontend Development](/cloud/docs/apps/frontend)
 
 ## Additional Concepts
 
