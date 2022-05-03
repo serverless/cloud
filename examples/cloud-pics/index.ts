@@ -60,7 +60,7 @@ api.get("/api/me", async (req: any, res) => {
 });
 
 api.post("/api/upload-url", async (req: any, res) => {
-  const id = ulid();
+  const id = ulid().toLowerCase();
 
   const { username } = req.user;
   const { filename } = req.body;

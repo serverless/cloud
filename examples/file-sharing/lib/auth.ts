@@ -1,10 +1,17 @@
-import { params } from "@serverless/cloud";
+import { data, params } from "@serverless/cloud";
 import crypto from "crypto";
-import { getUserForSub, createUser } from "./data";
 import util from "util";
 import jwt from "jsonwebtoken";
 
 const TOKEN_SECRET = params.TOKEN_SECRET || "replace-me";
+
+export interface User {
+  username: string;
+  name: string;
+  email: string;
+  hashedPassword: string;
+  salt: string;
+}
 
 const pbkdf2 = util.promisify(crypto.pbkdf2);
 
@@ -15,7 +22,7 @@ const systemWarning = !params.TOKEN_SECRET
 export function login() {
   return async (req, res, next) => {
     try {
-      const user = await getUserForSub(req.body.username);
+      const user = await getUser(req.body.username);
       if (!user) {
         throw new Error("Invalid username");
       }
@@ -33,20 +40,19 @@ export function login() {
         throw new Error("Invalid password");
       }
 
-      req.user = {
-        id: user.id,
+      res.locals.user = {
         name: user.name,
         username: user.username,
+        email: user.email,
       };
 
-      req.token = await createUserToken(req.user);
-      req.systemWarning = systemWarning;
+      res.locals.token = await createUserToken(res.locals.user);
+      res.locals.systemWarning = systemWarning;
 
-      res.cookie("sid", req.token);
+      res.cookie("sid", res.locals.token);
 
       return next();
     } catch (error) {
-      console.log(error);
       return res.status(403).send({
         message: "Login failed",
         systemWarning,
@@ -65,31 +71,37 @@ export function logout() {
 export function register() {
   return async (req, res, next) => {
     try {
-      if (!req.body.username || !req.body.password || !req.body.name) {
-        throw new Error("Username, full name, and password are required");
+      if (
+        !req.body.username ||
+        !req.body.password ||
+        !req.body.name ||
+        !req.body.email
+      ) {
+        throw new Error(
+          "Username, full name, email, and password are required"
+        );
       }
 
-      const existing = await getUserForSub(req.body.username);
+      const existing = await getUser(req.body.username);
       if (existing) {
         throw new Error("User already exists with that username");
       }
 
       const user = await createUser(req.body);
 
-      req.user = {
-        id: user.id,
+      res.locals.user = {
         name: user.name,
         username: user.username,
+        email: user.email,
       };
 
-      req.token = await createUserToken(req.user);
-      req.systemWarning = systemWarning;
+      res.locals.token = await createUserToken(res.locals.user);
+      res.locals.systemWarning = systemWarning;
 
-      res.cookie("sid", req.token);
+      res.cookie("sid", res.locals.token);
 
       return next();
     } catch (error) {
-      console.log(error);
       return res.status(403).send({
         message: error.message,
         systemWarning,
@@ -100,12 +112,16 @@ export function register() {
 
 async function createUserToken(user) {
   return jwt.sign(
-    { id: user.id, username: user.username, name: user.name },
+    {
+      username: user.username,
+      name: user.name,
+      email: user.email,
+    },
     TOKEN_SECRET
   );
 }
 
-export function auth() {
+export function authorize() {
   return async function (req, res, next) {
     try {
       const token =
@@ -115,15 +131,37 @@ export function auth() {
         throw new Error("No token found");
       }
 
-      req.user = jwt.verify(token, TOKEN_SECRET);
-      req.systemWarning = systemWarning;
+      res.locals.user = jwt.verify(token, TOKEN_SECRET);
+      res.locals.systemWarning = systemWarning;
 
       return next();
     } catch (error) {
       res.status(403).send({
-        message: "Invalid authorization token",
+        message: "Unauthorized",
         systemWarning,
       });
     }
   };
+}
+
+async function createUser({ username, name, password, email }): Promise<User> {
+  const salt = crypto.randomBytes(16).toString();
+
+  const hashedPassword = (
+    await pbkdf2(password, salt, 310000, 32, "sha256")
+  ).toString();
+
+  const result = (await data.set(`user_${username}`, {
+    username,
+    name,
+    email,
+    hashedPassword,
+    salt,
+  })) as User;
+
+  return result;
+}
+
+async function getUser(username: string): Promise<User> {
+  return (await data.get(`user_${username}`)) as unknown as User;
 }

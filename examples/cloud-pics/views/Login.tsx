@@ -51,7 +51,7 @@ export default function Login() {
                 ref={nameInputRef}
                 type="text"
                 name="name"
-                tabIndex={0}
+                tabIndex={1}
                 className="form-control"
                 value={name}
                 autoFocus={register}
@@ -69,7 +69,7 @@ export default function Login() {
               ref={usernameInputRef}
               type="text"
               autoFocus={!register}
-              tabIndex={1}
+              tabIndex={2}
               name="username"
               className="form-control"
               value={username}
@@ -82,7 +82,7 @@ export default function Login() {
             </label>
             <input
               type="password"
-              tabIndex={2}
+              tabIndex={3}
               className="form-control"
               id="exampleInputPassword1"
               name="password"
@@ -102,7 +102,7 @@ export default function Login() {
             <>
               <div>
                 <Button
-                  tabIndex={3}
+                  tabIndex={4}
                   onClick={() => authState.login({ username, password })}
                 >
                   Sign in
@@ -123,7 +123,7 @@ export default function Login() {
             <>
               <div>
                 <Button
-                  tabIndex={4}
+                  tabIndex={5}
                   onClick={() =>
                     authState.register({ username, name, password })
                   }
@@ -134,6 +134,7 @@ export default function Login() {
               <div>
                 <button
                   type="button"
+                  tabIndex={6}
                   className="btn btn-link mt-3 ps-0"
                   onClick={() => setRegister(false)}
                 >
