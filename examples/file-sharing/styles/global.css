@@ -1,0 +1,6 @@
+@import 'https://unpkg.com/@picocss/pico@latest/css/pico.min.css';
+
+:root {
+  --primary: #fd5750 !important;
+  --primary-hover: #e74b46 !important;
+}

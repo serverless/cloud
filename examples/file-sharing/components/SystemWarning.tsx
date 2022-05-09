@@ -1,6 +1,12 @@
 export default function SystemWarning({ message }) {
   return (
-    <div className="alert alert-primary rounded-0" role="alert">
+    <div
+      style={{
+        background: '#FD5750',
+        color: '#fff',
+        padding: 20,
+      }}
+    >
       {message}
     </div>
   );
