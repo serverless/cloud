@@ -1,11 +1,11 @@
-import useSWR from 'swr';
+import useSWR from "swr";
 
 export async function fetcher(key) {
   const result = await fetch(key);
 
   if (!result.ok) {
     const error = await result.json().catch(() => {});
-    throw new Error(error.message || 'Unknown error');
+    throw new Error(error.message || "Unknown error");
   }
 
   return result.json();

@@ -1,4 +1,4 @@
-@import 'https://unpkg.com/@picocss/pico@latest/css/pico.min.css';
+@import "https://unpkg.com/@picocss/pico@latest/css/pico.min.css";
 
 :root {
   --primary: #fd5750 !important;

@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { useData, useFile } from '@lib/data';
-import { FileIcon, defaultStyles } from 'react-file-icon';
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { useData, useFile } from "@lib/data";
+import { FileIcon, defaultStyles } from "react-file-icon";
 
-import Main from '@components/Main';
+import Main from "@components/Main";
 
-import Loading from '@components/Loading';
-import ErrorMessage from '@components/ErrorMessage';
+import Loading from "@components/Loading";
+import ErrorMessage from "@components/ErrorMessage";
 
 export default function FilePage() {
   const { query } = useRouter();
@@ -23,34 +23,35 @@ export default function FilePage() {
   const handleCreateLinkClick = async () => {
     setLoading(true);
     await fetch(`/api/files/${query.id}/links`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
     mutate();
     setLoading(false);
   };
   const handleDeleteClick = async (id) => {
-    await fetch(`/api/links/${id}`, { method: 'DELETE' });
+    await fetch(`/api/links/${id}`, { method: "DELETE" });
     mutate();
   };
   if (loadingFile) {
-    return <Loading width='100%' height='300px' />;
+    return <Loading width="100%" height="300px" />;
   }
   return (
     <Main>
       {error && <ErrorMessage message={error.message} />}
       {file ? (
         <div>
-          <div
+          <a
+            href={`/api/files/${file.id}/download`}
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              border: '1px solid #d4d4d4',
+              display: "flex",
+              alignItems: "center",
+              border: "1px solid #d4d4d4",
               borderRadius: 5,
               padding: 20,
-              margin: '40px 0',
+              margin: "40px 0",
             }}
           >
             <div
@@ -62,40 +63,41 @@ export default function FilePage() {
               <FileIcon
                 extension={file?.ext}
                 {...defaultStyles}
-                color='#FD5750'
+                color="#FD5750"
               />
             </div>
             <h3 style={{ marginBottom: 0 }}>{file.filename}</h3>
-          </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          </a>
+
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
             <h4>Shared Links</h4>
             <button
               style={{ width: 300 }}
               onClick={handleCreateLinkClick}
               disabled={!!loading}
-              aria-busy={loading ? 'true' : 'false'}
+              aria-busy={loading ? "true" : "false"}
             >
-              {loading ? 'Loading' : 'Create a share link'}
+              {loading ? "Loading" : "Create a share link"}
             </button>
           </div>
 
           {loadingLinks ? (
-            <Loading width='100%' height='500px' />
+            <Loading width="100%" height="500px" />
           ) : !links?.length ? (
             <p>File is not currently shared</p>
           ) : (
             <div
               style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '20px',
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "20px",
               }}
             >
               {links.map((link) => (
                 <div
                   key={link.id}
                   style={{
-                    border: '1px solid #d4d4d4',
+                    border: "1px solid #d4d4d4",
                     padding: 20,
                     borderRadius: 6,
                   }}
@@ -112,7 +114,7 @@ export default function FilePage() {
                     Copy to clipboard
                   </button>
                   <button
-                    className='secondary outline'
+                    className="secondary outline"
                     onClick={() => handleDeleteClick(link.id)}
                   >
                     Delete

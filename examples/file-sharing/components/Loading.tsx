@@ -4,12 +4,12 @@ export default function Loading({ width, height }) {
       style={{
         width,
         height,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
-      <h5 aria-busy='true'>Loading</h5>
+      <h5 aria-busy="true">Loading</h5>
     </div>
   );
 }

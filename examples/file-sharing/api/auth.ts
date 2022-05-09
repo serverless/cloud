@@ -1,6 +1,6 @@
 import express from "express";
 
-import { login, logout, register } from "./lib/auth";
+import { login, logout, register } from "../lib/auth";
 
 // Authentication API
 export const router = express.Router();

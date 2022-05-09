@@ -1,14 +1,11 @@
-import { params } from '@serverless/cloud';
-import withCloud from '@serverless/cloud/nextjs';
+import { params } from "@serverless/cloud";
+import withCloud from "@serverless/cloud/nextjs";
 
 export default withCloud({
   reactStrictMode: true,
-  images: {
-    domains: ['assets-global.website-files.com'],
-  },
   async rewrites() {
     // in production mode, requests automatically fall through to the cloud api
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV === "production") {
       return [];
     }
 
@@ -16,7 +13,7 @@ export default withCloud({
     return {
       fallback: [
         {
-          source: '/:path*',
+          source: "/:path*",
           destination: `${params.CLOUD_URL}/:path*`,
         },
       ],

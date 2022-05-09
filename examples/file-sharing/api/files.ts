@@ -14,7 +14,7 @@ router.get("/", async (req: any, res) => {
   res.json(files.items.map((item) => item.value));
 });
 
-// Middleware to check that the user has access to the file
+// Middleware to load a file and check that the user has access to it
 router.use("/:id*", async (req: any, res: any, next) => {
   const { id } = req.params;
   const { username } = res.locals.user;
@@ -36,18 +36,18 @@ router.use("/:id*", async (req: any, res: any, next) => {
   return next();
 });
 
-// Return the file
+// Return a file
 router.get("/:id", async (req: any, res) => {
   res.json(res.locals.file);
 });
 
-// Download the file
+// Download a file
 router.get("/:id/download", async (req: any, res) => {
   const url = await storage.getDownloadUrl(`files/${req.params.id}`);
   res.redirect(url);
 });
 
-// Delete the file
+// Delete a file
 router.delete("/:id", async (req: any, res) => {
   await data.remove(`file_${req.params.id}`);
   res.status(204).send();

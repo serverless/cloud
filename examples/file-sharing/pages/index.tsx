@@ -1,20 +1,20 @@
-import { useSnapshot } from 'valtio';
-import Main from '@components/Main';
-import auth from '@state/auth';
-import Login from '@components/Login';
+import { useSnapshot } from "valtio";
+import Main from "@components/Main";
+import auth from "@state/auth";
+import Login from "@components/Login";
 
-import Upload from '@components/Upload';
+import Upload from "@components/Upload";
 
 const styles = {
   wrapper: {
-    minHeight: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
   },
   footer: {
-    margin: '50px auto',
-    textAlign: 'center',
+    margin: "50px auto",
+    textAlign: "center",
   },
 } as const;
 
