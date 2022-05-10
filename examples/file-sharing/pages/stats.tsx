@@ -1,9 +1,5 @@
-import { useSnapshot } from "valtio";
-
-import auth from "@state/auth";
 import Main from "@components/Main";
-import Login from "@components/Login";
-import Upload from "@components/Upload";
+import Stats from "@components/Stats";
 
 const styles = {
   wrapper: {
@@ -18,13 +14,11 @@ const styles = {
   },
 } as const;
 
-export default function HomePage() {
-  const { user } = useSnapshot(auth);
-
+export default function OpenPage() {
   return (
     <Main>
       <div style={styles.wrapper}>
-        {!user ? <Login /> : <Upload />}
+        <Stats />
         <h6 style={styles.footer}>Made with &#10084; with Serverless Cloud</h6>
       </div>
     </Main>

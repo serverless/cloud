@@ -6,7 +6,7 @@ type Stats = {
 };
 
 export function setup() {
-  api.get("/stats", async (req, res) => {
+  api.get("/open/stats", async (req, res) => {
     const stats = await data.get<Stats>("global_stats");
     res.json(stats);
   });

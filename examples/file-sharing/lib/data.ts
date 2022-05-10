@@ -28,3 +28,13 @@ export function useFile(id) {
 
   return { file };
 }
+
+export function useStats() {
+  const { data, error } = useData("/open/stats");
+
+  if (error) {
+    return { error };
+  }
+
+  return { data };
+}
