@@ -20,15 +20,6 @@ const LINK_EXPIRY_SECONDS = Number.parseInt(params.LINK_EXPIRY_SECONDS) || 10;
 filesApi.post("/:id/links", async (req: any, res) => {
   const fileid = req.params.id;
 
-  // Make sure the file exists
-  const result = (await data.get(`file_${fileid}`)) as any;
-  if (!result) {
-    res.status(404).json({
-      message: "File not found",
-    });
-    return;
-  }
-
   // Create a sortable unique ID for the link
   const id = ulid().toLowerCase();
 
@@ -88,7 +79,7 @@ events.on("link.expired", async ({ body }) => {
 publicRouter.get("/:linkid", async (req: any, res) => {
   const { linkid } = req.params;
   const result = await data.get<Link>(`link_${linkid}`);
-  if (!result) {
+  if (!result || result.expires < new Date().toISOString()) {
     res.status(404).send({
       message: "Link not found",
     });

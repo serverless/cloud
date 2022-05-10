@@ -25,10 +25,12 @@ function MyApp({ Component, pageProps }) {
       <div style={{ background: "black" }}>
         <nav className="container">
           <ul>
-            <li style={{ display: "flex", color: "#fff" }}>
-              <a href="/" style={{ display: "flex", color: "#fff" }}>
-                <strong>Share Files</strong>
-              </a>
+            <li>
+              <Link href="/">
+                <a style={{ display: "flex", color: "#fff" }}>
+                  <strong>Share Files</strong>
+                </a>
+              </Link>
             </li>
           </ul>
           <ul>

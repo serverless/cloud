@@ -10,8 +10,11 @@ export const router = express.Router();
 // List the logged-in user's files
 router.get("/", async (req: any, res) => {
   const { username } = res.locals.user;
-  const files = await data.getByLabel("label1", `user_${username}:file_*`);
-  res.json(files.items.map((item) => item.value));
+  const [files, stats] = await Promise.all([
+    data.getByLabel("label1", `user_${username}:file_*`),
+    data.get(`stats_${username}`),
+  ]);
+  res.json({ stats, items: files.items.map((item) => item.value) });
 });
 
 // Middleware to load a file and check that the user has access to it

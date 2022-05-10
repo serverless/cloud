@@ -43,3 +43,10 @@ router.post("/", async (req: any, res) => {
   const uploadUrl = await storage.getUploadUrl(`files/${id}`);
   res.json({ url: uploadUrl });
 });
+
+// Update the file size in data after a file is uploaded
+storage.on("write:files/*", async ({ path, size }) => {
+  const id = path.split("/").pop();
+  console.log(`File size for file ${id} is ${size}`);
+  await data.set(`file_${id}`, { size });
+});

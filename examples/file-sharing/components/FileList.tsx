@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import { FileIcon, defaultStyles } from "react-file-icon";
 import Image from "next/image";
-import Link from "next/link";
 
 import trash from "../styles/trash.svg";
 
@@ -69,10 +68,10 @@ export default function FileList({ mutate, data, error }) {
       }}
     >
       <h5 aria-busy={loadingDelete || loadingFiles ? "true" : "false"}>
-        My Files
+        My Files {data?.stats ? `(${data.stats.file_count})` : ""}
       </h5>
-      {!loadingFiles && !data?.length && <p>You have no files</p>}
-      {data?.length ? (
+      {!loadingFiles && !data?.items.length && <p>You have no files</p>}
+      {data?.items.length ? (
         <div
           style={{
             display: "grid",
@@ -80,7 +79,7 @@ export default function FileList({ mutate, data, error }) {
             gap: 20,
           }}
         >
-          {data?.reverse().map(({ id, filename, ext }) => (
+          {data?.items.map(({ id, filename, ext }) => (
             <a key={id} href={`/files/${id}`} style={styles.filebox}>
               <>
                 <div style={styles.fileBoxIcon}>
