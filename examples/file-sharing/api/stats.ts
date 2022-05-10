@@ -1,4 +1,4 @@
-import { data, schedule } from "@serverless/cloud";
+import { api, data, schedule } from "@serverless/cloud";
 
 type Stats = {
   file_count: number;
@@ -6,6 +6,11 @@ type Stats = {
 };
 
 export function setup() {
+  api.get("/stats", async (req, res) => {
+    const stats = await data.get<Stats>("global_stats");
+    res.json(stats);
+  });
+
   // Update global user count
   data.on("created:user_*", async () => {
     await data.set("global_stats", { user_count: { $add: 1 } });

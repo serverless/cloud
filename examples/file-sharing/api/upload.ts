@@ -2,6 +2,15 @@ import { api, data, storage } from "@serverless/cloud";
 import { ulid } from "ulid";
 import mime from "mime-types";
 
+type Upload = {
+  id: string;
+  filename: string;
+  type: string;
+  ext: string;
+  username: string;
+  size: number;
+};
+
 export function setup() {
   api.post("/api/upload", async (req: any, res) => {
     const { filename } = req.body;
@@ -21,9 +30,9 @@ export function setup() {
 
     const { username } = res.locals.user;
 
-    // Create a file item in data
+    // Create an upload item in data
     await data.set(
-      `file_${id}`,
+      `upload_${id}`,
       {
         id,
         filename,
@@ -32,8 +41,8 @@ export function setup() {
         username,
       },
       {
-        // This lets us look up files by username
-        label1: `user_${username}:file_${id}`,
+        // Clean up if upload doesn't happen within an hour
+        ttl: 3600,
       }
     );
 
@@ -45,7 +54,36 @@ export function setup() {
   // Update the file size in data after a file is uploaded
   storage.on("write:files/*", async ({ path, size }) => {
     const id = path.split("/").pop();
+
+    const upload = await data.get<Upload>(`upload_${id}`);
+    if (!upload) {
+      await storage.remove(`files/${id}`);
+    }
+
+    const { filename, type, ext, username } = upload;
+
     console.log(`File size for file ${id} is ${size}`);
-    await data.set(`file_${id}`, { size });
+
+    // Create an file item in data
+    await data.set(
+      `file_${id}`,
+      {
+        id,
+        filename,
+        type,
+        ext,
+        size,
+        username,
+      },
+      {
+        // This lets us look up files by username
+        label1: `user_${username}:file_${id}`,
+      }
+    );
+  });
+
+  data.on("created:file_*", async ({ item }) => {
+    // Remove the upload item
+    await data.remove(`upload_${item.value.id}`);
   });
 }

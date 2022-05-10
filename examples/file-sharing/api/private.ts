@@ -12,6 +12,7 @@ export function setup() {
 
   // Return details of the logged in user
   api.get("/api/me", async (req: any, res) => {
+    console.log(req.cookies.sid);
     res.send({
       user: res.locals.user,
       systemWarning: res.locals.systemWarning,
