@@ -1,28 +1,24 @@
-import express from "express";
+import { api } from "@serverless/cloud";
 
 import { authorize } from "../lib/auth";
-import { router as uploadApi } from "./upload";
-import { router as filesApi } from "./files";
-import { router as linksApi } from "./links";
 
-export const router = express.Router();
+import { setup as setupUpload } from "./upload";
+import { setup as setupFiles } from "./files";
+import { setup as setupLinks } from "./links";
 
-// Require authorization on these routes
-router.use(authorize());
+export function setup() {
+  // Require authorization on these routes
+  api.use("/api", authorize());
 
-// Return details of the logged in user
-router.get("/me", async (req: any, res) => {
-  res.send({
-    user: res.locals.user,
-    systemWarning: res.locals.systemWarning,
+  // Return details of the logged in user
+  api.get("/api/me", async (req: any, res) => {
+    res.send({
+      user: res.locals.user,
+      systemWarning: res.locals.systemWarning,
+    });
   });
-});
 
-// Mount the uploads API
-router.use("/upload", uploadApi);
-
-// Mount the files API
-router.use("/files", filesApi);
-
-// Mount the links API
-router.use("/links", linksApi);
+  setupUpload();
+  setupFiles();
+  setupLinks();
+}
