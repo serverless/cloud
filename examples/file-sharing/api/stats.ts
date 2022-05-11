@@ -8,7 +8,7 @@ type Stats = {
 export function setup() {
   api.get("/open/stats", async (req, res) => {
     const stats = await data.get<Stats>("global_stats");
-    res.json(stats);
+    res.json(stats || { file_count: 0, user_count: 0 });
   });
 
   // Update global user count

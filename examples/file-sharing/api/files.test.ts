@@ -56,10 +56,10 @@ describe("files", () => {
 
     expect(uploadResult.status).toEqual(200);
 
-    // Wait for file size to be updated
+    // Wait for file item to be created
     for (let i = 0; i < 10; i++) {
       const res: any = await data.get(`file_${file.id}`);
-      if (!res.size) {
+      if (!res?.size) {
         await delay(500);
       }
     }
