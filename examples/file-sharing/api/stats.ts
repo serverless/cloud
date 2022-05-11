@@ -20,7 +20,7 @@ export function setup() {
     await data.set("global_stats", { user_count: { $add: -1 } });
   });
 
-  // Update global and user file count
+  // Update global and per-user file count
   data.on("created:file_*", async ({ item }) => {
     const { username } = item.value;
     await Promise.all([

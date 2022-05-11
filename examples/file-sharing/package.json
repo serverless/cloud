@@ -37,7 +37,7 @@
     "valtio": "^1.6.0"
   },
   "serverless": {
-    "app": "file-sharing-demo",
-    "org": "rschick"
+    "app": "file-sharing",
+    "org": "serverless"
   }
 }

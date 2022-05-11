@@ -41,7 +41,7 @@ export function setup() {
         username,
       },
       {
-        // Clean up if upload doesn't happen within an hour
+        // Remove the item after an hour if the upload doesn't succeed
         ttl: 3600,
       }
     );
@@ -51,10 +51,11 @@ export function setup() {
     res.json({ id, filename, type, ext, username, url: uploadUrl });
   });
 
-  // Update the file size in data after a file is uploaded
+  // After a file is uploaded, create a file item
   storage.on("write:files/*", async ({ path, size }) => {
     const id = path.split("/").pop();
 
+    // Get the associated upload item
     const upload = await data.get<Upload>(`upload_${id}`);
     if (!upload) {
       await storage.remove(`files/${id}`);
@@ -82,8 +83,8 @@ export function setup() {
     );
   });
 
+  // After the file item is created we can remove the associated upload item
   data.on("created:file_*", async ({ item }) => {
-    // Remove the upload item
     await data.remove(`upload_${item.value.id}`);
   });
 }
