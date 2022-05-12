@@ -1,0 +1,21 @@
+{
+  "name": "js-api",
+  "version": "1.0.0",
+  "description": "Serverless Cloud JavaScript API template",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "cloud",
+    "test": "cloud test"
+  },
+  "devDependencies": {
+    "@serverless/cloud": "^2.0.0"
+  },
+  "serverless": {
+    "app": "cloud-upstash",
+    "org": "serverless"
+  },
+  "dependencies": {
+    "@upstash/redis": "^1.3.4"
+  }
+}
