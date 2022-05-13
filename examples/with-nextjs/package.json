@@ -23,7 +23,6 @@
     "react-day-picker": "^7.4.10"
   },
   "serverless": {
-    "app": "with-nextjs",
-    "org": "serverless"
+    "app": "with-nextjs"
   }
 }
