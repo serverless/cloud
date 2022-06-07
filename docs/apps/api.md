@@ -72,6 +72,7 @@ The Request object supports the following properties and methods. By convention,
 | `req.params`  | An object that contains parsed parameters from the url as defined using `:paramName`.                                               |
 | `req.path`    | The path used in the request.                                                                                                       |
 | `req.query`   | An object containing parsed querystring parameters.                                                                                 |
+| `req.headers` | An object containing request headers
 
 ### Response object
 
