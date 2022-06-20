@@ -9,6 +9,51 @@ menuOrder: 9
 
 See what's new in Serverless Cloud as we build the most developer-friendly serverless app platform ever! 🚀
 
+## June 2022
+
+### Billing System Improvements
+
+We've made a number of improvements to our billing system to make it easier to manage your account billing. For additional payment options, please contact us at cloud@serverless.com. 
+
+## May 2022 
+
+### Deployment Logs on Serverless Cloud Dashboard
+
+You now have the ability to see the historical deployment logs of your stages in the Serverless Cloud Dashboard. Click the target stage on the Serverless Cloud Dashboard and navigate to the “Deployments” tab. You can review the full logs of successful and failed deployments. 
+ 
+### Dashboard Improvements for easier app management
+
+As more applications and instances were added, the Serverless Cloud Dashboard could become cluttered with all of your developer sandboxes, preview instances, and stages. Today, we unveiled a new structured view that provides a clearer delineation between the different types of instances. Additionally, you now have the ability to pin certain instances, such as your production instance, to the top of the list for easier access.
+
+## April 2022 
+
+### Full-stack support
+
+Serverless Cloud now includes support for frontend frameworks such as React, Vue.js, Eleventy, SvelteKit, Astro.build, and Next.js, with more frameworks on the way. This enables developers to seamlessly integrate frontend and backend code into a completely unified developer experience, providing you with a lightning-fast feedback loop. The Serverless Cloud CLI now includes a new "dev mode" that runs your framework's local development server within the context of your app. This grants you remote access to the parameters, data, and storage of your personal sandbox. Furthermore, we automatically create a local proxy to your API endpoint that runs alongside the local development server, allowing you to interact with your live backend in real time. Incorporate a "cloud:dev" script into your package. json file that executes your framework's standard "dev" script, and you're done. When you run "share" or "deploy" from the CLI, Serverless Cloud will generate a production optimized version of your project. Include the build command for your framework in your package.json's "cloud:build" script and it will be executed whenever it is shared or deployed. See the below example for Next.js. 
+
+```
+"scripts": {
+ "cloud:build": "next build",
+ "cloud:dev": "next dev",
+},
+```
+
+### Billing Updates and New Plans
+
+Thousands of developers have used Serverless Cloud to create full-stack event-driven applications by just writing code. Our early users were extremely helpful in improving our runtime and platform. We already host many production apps for a variety of use cases, and today, we're making paid plans available to any team while still offering our generous free tier for hobbyists and single developers. More information about plans can be found on the pricing page. If you have any questions, please contact us at cloud@serverless.com.
+
+### Sentry Integration
+
+With metrics and log views for each instance, Serverless Cloud already helps you understand and troubleshoot potential issues with your apps. However, our friends at Sentry provided an official way to integrate their service with Serverless Cloud. All errors within your Serverless Cloud apps will be tracked, along with rich traces and log data provided by Sentry out of the box. Connect your Sentry account to Serverless Cloud using the integration guide! More observability integrations are on the way!
+
+### Next.js ISR Support
+
+ISR (Incremental Static Regeneration) allows developers to build static pages at *runtime* instead of build time. This enables the ability to update static pages without having to run full build, which also reduces normal build times. Developers can take advantage of ISR integrated with Serverless Storage on Serverless Cloud. See the full-blog post here. 
+
+### Discord Server
+
+For questions and discussions about Serverless Cloud, we have a dedicated channel (#serverless-cloud) on Serverless Community Slack. Because this Slack community is also used for Serverless Inc.'s other products, we decided to launch our Discord Server in order to build a community dedicated solely to Serverless Cloud. Join us here to socialize with other builders, to learn from the team, and to bring your questions and feedback!
+
 ## March 2022
 
 ### Atomic Counters and Batch Sets
