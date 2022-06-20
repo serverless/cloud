@@ -40,19 +40,19 @@ Serverless Cloud now includes support for frontend frameworks such as React, Vue
 
 ### Billing Updates and New Plans
 
-Thousands of developers have used Serverless Cloud to create full-stack event-driven applications by just writing code. Our early users were extremely helpful in improving our runtime and platform. We already host many production apps for a variety of use cases, and today, we're making paid plans available to any team while still offering our generous free tier for hobbyists and single developers. More information about plans can be found on the pricing page. If you have any questions, please contact us at cloud@serverless.com.
+Thousands of developers have used Serverless Cloud to create full-stack event-driven applications by just writing code. Our early users were extremely helpful in improving our runtime and platform. We already host many production apps for a variety of use cases, and today, we're making paid plans available to any team while still offering our generous free tier for hobbyists and single developers. More information about plans can be found on the [pricing page](https://www.serverless.com/cloud/pricing). If you have any questions, please contact us at cloud@serverless.com.
 
 ### Sentry Integration
 
-With metrics and log views for each instance, Serverless Cloud already helps you understand and troubleshoot potential issues with your apps. However, our friends at Sentry provided an official way to integrate their service with Serverless Cloud. All errors within your Serverless Cloud apps will be tracked, along with rich traces and log data provided by Sentry out of the box. Connect your Sentry account to Serverless Cloud using the integration guide! More observability integrations are on the way!
+With metrics and log views for each instance, Serverless Cloud already helps you understand and troubleshoot potential issues with your apps. However, our friends at Sentry provided an official way to integrate their service with Serverless Cloud. All errors within your Serverless Cloud apps will be tracked, along with rich traces and log data provided by Sentry out of the box. Connect your Sentry account to Serverless Cloud using the [integration guide](https://docs.sentry.io/platforms/node/guides/serverless-cloud/)! More observability integrations are on the way!
 
 ### Next.js ISR Support
 
-ISR (Incremental Static Regeneration) allows developers to build static pages at *runtime* instead of build time. This enables the ability to update static pages without having to run full build, which also reduces normal build times. Developers can take advantage of ISR integrated with Serverless Storage on Serverless Cloud. See the full-blog post here. 
+ISR (Incremental Static Regeneration) allows developers to build static pages at *runtime* instead of build time. This enables the ability to update static pages without having to run full build, which also reduces normal build times. Developers can take advantage of ISR integrated with Serverless Storage on Serverless Cloud. See the [full-blog post here](https://www.serverless.com/blog/using-next-js-isr-with-serverless-cloud). 
 
 ### Discord Server
 
-For questions and discussions about Serverless Cloud, we have a dedicated channel (#serverless-cloud) on Serverless Community Slack. Because this Slack community is also used for Serverless Inc.'s other products, we decided to launch our Discord Server in order to build a community dedicated solely to Serverless Cloud. Join us here to socialize with other builders, to learn from the team, and to bring your questions and feedback!
+For questions and discussions about Serverless Cloud, we have a dedicated channel (#serverless-cloud) on [Serverless Community Slack](https://www.serverless.com/slack). Because this Slack community is also used for Serverless Inc.'s other products, we decided to launch our Discord Server in order to build a community dedicated solely to Serverless Cloud. [Join us here](https://discord.gg/ubvGVqTsPv) to socialize with other builders, to learn from the team, and to bring your questions and feedback!
 
 ## March 2022
 
