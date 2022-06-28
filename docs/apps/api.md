@@ -72,7 +72,7 @@ The Request object supports the following properties and methods. By convention,
 | `req.params`  | An object that contains parsed parameters from the url as defined using `:paramName`.                                               |
 | `req.path`    | The path used in the request.                                                                                                       |
 | `req.query`   | An object containing parsed querystring parameters.                                                                                 |
-| `req.headers` | An object containing request headers
+| `req.headers` | An object containing request headers                                                                                                |
 
 ### Response object
 
@@ -122,6 +122,8 @@ api.get('/user', { timeout: 2000 }, (req,res) => {
 ## Handling Uploads
 
 API automatically handles files uploaded as either a binary body or in multipart form data on any POST or PUT route.
+
+> Note: Uploads through the `api` have a size limit of 6MB. You can upload larger files directly to storage using [`storage.getUploadUrl()`](/cloud/docs/apps/blob-storage#upload-and-download-urls).
 
 ### Binary Body Uploads
 
