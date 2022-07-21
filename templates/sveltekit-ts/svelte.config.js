@@ -1,26 +1,19 @@
-import withCloud from '@serverless/cloud/svelte'
-import preprocess from 'svelte-preprocess';
+import withCloud from "@serverless/cloud/svelte";
+import preprocess from "svelte-preprocess";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = withCloud({
-	preprocess: [
-		preprocess({
-			preserve: ['ld+json', 'module'],
-			typescript: true,
-		}),
-	],
-	kit: {
-		methodOverride: {
-            allowed: ['PATCH', 'DELETE']
-        },
-        vite: {
-            server: {
-                proxy: {
-                    '/api': `http://localhost:${process.env.CLOUD_PORT}`
-                }
-            },
-        }
-	},
+  preprocess: [
+    preprocess({
+      preserve: ["ld+json", "module"],
+      typescript: true,
+    }),
+  ],
+  kit: {
+    methodOverride: {
+      allowed: ["PATCH", "DELETE"],
+    },
+  },
 });
 
-export default config
+export default config;
